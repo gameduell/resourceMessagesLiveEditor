@@ -6,6 +6,7 @@ html.login
     link(rel='stylesheet', href='/bower_components/octicons/octicons/octicons.css')
     script(type='text/javascript', src='/dist/animatedSVG/js/snap.svg-min.js')
     script(type='text/javascript', src='/dist/animatedSVG/js/svgicons.js')
+    script(type='text/javascript', src='/dist/js/translatron-login.js')
 
   body.login
     main
@@ -19,5 +20,7 @@ html.login
             input.inputField(type='text', name='username', placeholder="Enter name")
 
             input.inputField(type='password', name='password', placeholder="Enter password")
+
+            input.inputField(canny-mod="loginAnchor")
 
             button.button.octicon.octicon-sign-in(type='submit') let me in

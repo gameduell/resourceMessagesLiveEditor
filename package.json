@@ -30,7 +30,7 @@
   "scripts": {
     "postinstall": "bower install",
     "test": "jasmine && karma start karma.conf.js",
-    "prestart": "browserify --debug lib/client/js/main.js -o dist/js/translatron.js && lessc lib/client/less/main.less dist/css/translatron.css",
+    "prestart": "browserify --debug lib/client/js/main.js -o dist/js/translatron.js && browserify --debug lib/client/js/login.js -o dist/js/translatron-login.js && lessc lib/client/less/main.less dist/css/translatron.css",
     "start": "node app.js"
   },
   "devDependencies": {
