@@ -2,7 +2,7 @@
   "name": "translatron",
   "auth": "eightyfour",
   "email": "eightyfour@thinkuseful.de",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "readmeFilename": "README.md",
   "engines": {
     "node": ">= v4.2.3 && <= 5.9.1"
