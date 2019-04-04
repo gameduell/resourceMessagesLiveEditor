@@ -1,0 +1,33 @@
+{
+  "description": "",
+  "numberOfKeys": 0,
+  "defaultLanguage": "en",
+  "availableLanguages": [
+    "en",
+    "de",
+    "fr",
+    "es",
+    "nl",
+    "da",
+    "sv",
+    "en_GB"
+  ],
+  "languages": {},
+  "keys": {
+    "en": {
+      "category_key1": "More",
+      "category2_key1": "bla",
+      "category2_key2": "foo"
+    },
+    "de": {
+      "category_key1": "mehr",
+      "category2_key1": "bla",
+      "category2_key2": "bar"
+    }
+  },
+  "keyDescriptions": {
+    "__description": ""
+  },
+  "images": {},
+  "project": "translations"
+}

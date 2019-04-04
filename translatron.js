@@ -39,7 +39,9 @@ function run(configuration) {
     // use bodyParser middleware for handling request bodies (express does *not* provide that feature out-of-the-box).
     // since we only have one case of that (POST to /login where username, password are in the body) and that one is url-encoded,
     // we only need that flavor of bodyParser. about the "extended" property, see https://github.com/expressjs/body-parser#bodyparserurlencodedoptions
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.urlencoded({
+        extended: false
+    }));
     // same for parsing cookie
     app.use(cookieParser());
 
@@ -51,14 +53,24 @@ function run(configuration) {
         app.use(require('./lib/server/middleware/touchSession'))
     }
 
-    app.use(function(req, res, next) {
+    app.use(function (req, res, next) {
         console.log(req.method, req.url, req.query, req.user ? req.user.name : '-');
         next();
     });
 
     // configure routes for static content
-    app.use('/dist',
-        express.static(__dirname + '/dist'));
+    if (config.translatronUi) {
+        app.use('/js',
+            express.static(__dirname + '/node_modules/@eightyfour84/translatron-ui/dist/js'));
+        app.use('/css',
+            express.static(__dirname + '/node_modules/@eightyfour84/translatron-ui/dist/css'));
+        app.use('/img',
+            express.static(__dirname + '/node_modules/@eightyfour84/translatron-ui/dist/img'));
+    } else {
+        app.use('/dist',
+            express.static(__dirname + '/dist'));
+    }
+
     app.use('/images',
         express.static(uploadFolder));
     app.use('/bower_components',
@@ -79,10 +91,17 @@ function run(configuration) {
     mainRouter.use(require('./lib/server/middleware-exporter/jpmbfExporter')(dao));
     mainRouter.use(require('./lib/server/middleware-exporter/jsonExporter')(dao));
     mainRouter.get('*', (req, res) => {
-        res.send(pug.compileFile(__dirname + '/lib/client/pug/index.pug')({version: packageJSON.version}));
+        if (config.translatronUi) {
+            res.header('version', packageJSON.version)
+            res.sendFile(__dirname + '/node_modules/@eightyfour84/translatron-ui/dist/index.html')
+        } else {
+            res.send(pug.compileFile(__dirname + '/lib/client/pug/index.pug')({
+                version: packageJSON.version
+            }));
+        }
     });
 
-    var toLoginIfUnauthenticated = function(req, res, next) {
+    var toLoginIfUnauthenticated = function (req, res, next) {
         if (!/\.json/.test(req.path) && !/\.properties/.test(req.path) && enableAuth && !req.user) {
             // TODO sending the login page only makes sense for browser requests. if anybody is e.g. using curl to
             // retrieve message bundles, we should only return a 401 but no content
@@ -100,7 +119,7 @@ function run(configuration) {
 
     var server = app.listen(serverPort);
 
-    var websocketServer = shoe(function(stream) {
+    var websocketServer = shoe(function (stream) {
         "use strict";
 
         var d = dnode(operations);

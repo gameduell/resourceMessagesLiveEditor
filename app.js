@@ -1,3 +1,9 @@
 var translatron = require('./translatron')
 // start the server with defaults
-translatron()
+const translatronUi = process.argv[2]
+
+if (translatronUi) {
+    translatron({translatronUi: true});
+} else{
+    translatron()
+}

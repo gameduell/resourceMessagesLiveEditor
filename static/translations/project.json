@@ -9,6 +9,11 @@
       "name": "sub2",
       "url": "/sub",
       "file": "/sub/sub2.json"
+    },
+    "tr1553534956591": {
+      "name": "translations",
+      "url": "/translatron",
+      "file": "/tr1553534956591.json"
     }
   }
 }

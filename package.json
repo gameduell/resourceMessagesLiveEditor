@@ -55,10 +55,11 @@
     "prestart": "npm run buildjs-dev && npm run less",
     "start": "node app.js",
     "devsetup": "bower install",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "start-translatron-ui": "node app.js translatron-ui"
   },
   "devDependencies": {
-    "bower": "^1.8.2",
+    "bower": "^1.8.8",
     "browserify": "^15.2.0",
     "canny": "^0.2.1",
     "canny-cookieManager-lib": "^1.1.1",

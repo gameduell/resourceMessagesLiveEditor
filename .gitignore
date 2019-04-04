@@ -24,3 +24,7 @@ coverage
 .idea
 
 *priv*
+
+static/
+dist/js/translatron.*.tmp*
+dist/js/translatron-login.*.tmp*
