@@ -1,15 +1,5 @@
 {
   "projects": {
-    "sub/sub1": {
-      "name": "sub1",
-      "url": "/sub",
-      "file": "/sub/sub1.json"
-    },
-    "sub/sub2": {
-      "name": "sub2",
-      "url": "/sub",
-      "file": "/sub/sub2.json"
-    },
     "tr1553534956591": {
       "name": "translations",
       "url": "/translatron",
