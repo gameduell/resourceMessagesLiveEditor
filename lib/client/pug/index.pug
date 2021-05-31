@@ -11,8 +11,11 @@ html
     header.header
       block breadcrumbTrail
         include breadcrumb
-        div(style='display: none', canny-mod='displayManager', canny-displaymanager="{'view':'resourceBundle'}")
+        div(style='display: none', canny-mod='displayManager', canny-displaymanager="{'view':'resourceBundle'}", class="displayManager")
           span.projectName.octicon.octicon-file-code {{msg.projectName}}
+        div.searchBar(canny-mod='searchBar', canny-var='root')
+          input(type='text', placeholder="Enter search term" canny-mod='searchBar', canny-var='input')
+          button(canny-mod='searchBar', canny-var='button') Search
         div.user-options-container
           span.auth-userName {{msg.userName}}
           span.auth-logout-btn.octicon.octicon-sign-out(canny-mod='auth', canny-var="logoutButton", title="logout")

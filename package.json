@@ -5,7 +5,7 @@
   "version": "1.0.6",
   "readmeFilename": "README.md",
   "engines": {
-    "node": ">= v4.2.3 && <= 5.9.1"
+    "node": ">= v15.14.0"
   },
   "license": "MIT",
   "dependencies": {
@@ -16,12 +16,12 @@
     "connect-busboy": "^0.0.2",
     "cookie-parser": "^1.4.3",
     "directory-tree": "^2.0.0",
-    "dnode": "^1.2.2",
+    "dnode-weak-napi": "^1.2.2",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "passport": "^0.4.0",
     "passport-ldapauth": "^2.0.0",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^3.0.1",
     "shoe": "^0.0.15",
     "stringify": "^5.2.0"
   },

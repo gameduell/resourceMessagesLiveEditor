@@ -438,3 +438,21 @@ In future it will be possible to save the projects in a database. So we get rid 
 **UI**
  * id is in URL (to share the unique link) - /[id]/[name].prj
  * breadcrumb will be
+
+## Search feature
+Enabled by passing object named 'search' including property 'socket' holding path to search service's unix-socket.
+- property inside config-object passed into translatron-constructor, e.g.
+```
+  var translatron = require('./translatron')
+  translatron({ search: { socket: '/path/to/socket' } })
+```
+- Can be defined in package.json, too:
+```
+  ...,
+  "config": {
+    ...,
+    search: { socket: 'path/to/socket'},
+    ...
+  },
+  ...
+```

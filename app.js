@@ -3,7 +3,13 @@ var translatron = require('./translatron')
 const translatronUi = process.argv[2]
 
 if (translatronUi) {
-    translatron({translatronUi: true});
+    translatron({
+        translatronUi: true
+    });
 } else{
-    translatron()
+    translatron({
+        search: {
+            socket: '/tmp/trans-search.sock'
+        }
+    })
 }

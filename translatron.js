@@ -16,8 +16,9 @@ function run(configuration) {
     var packageJSON = require('./package.json'),
         express = require('express'),
         shoe = require('shoe'),
-        dnode = require('dnode'),
-        dao = require('./lib/server/dao.js')({projectFolder, uploadFolder, projectJSON}),
+        dnode = require('dnode-weak-napi'),
+        searchConfig = config.hasOwnProperty('search') ? config.search : packageJSON.config.search,
+        dao = require('./lib/server/dao.js')({projectFolder, uploadFolder, projectJSON, searchConfig}),
         fileManager = require('./lib/server/legacy/fileManager.js')(projectFolder),
         serverPort = config.port || (packageJSON.config.port || 3000),
         enableAuth = packageJSON.config.enableAuth,
@@ -26,7 +27,7 @@ function run(configuration) {
         bodyParser = require('body-parser'),
         changesNotifier = require('./lib/server/changesNotifier.js')(),
         busboy = require('connect-busboy'),
-        operations = require('./lib/server/operations.js')(dao, changesNotifier, config.auth);
+        operations = require('./lib/server/operations.js')(dao, changesNotifier, config.auth, searchConfig);
 
     var app = express();
     
