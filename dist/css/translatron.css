@@ -1668,6 +1668,19 @@ body.login form button {
 .searchResults section p {
   margin: 0.8em 0;
 }
+.searchResults section .term {
+  color: yellow;
+}
+.searchResults section .found-languages {
+  margin: 0.5em 0;
+}
+.searchResults section .found-languages .language-switch .lang-button {
+  display: inline-block;
+  margin: 0.2em;
+  border-radius: 4px;
+  padding: 0.3em 0.5em;
+  background: rgba(128, 128, 128, 0.9);
+}
 .searchResults section .results-list {
   position: relative;
   margin: auto;
