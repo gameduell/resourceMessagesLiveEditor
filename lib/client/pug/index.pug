@@ -14,8 +14,8 @@ html
         div(style='display: none', canny-mod='displayManager', canny-displaymanager="{'view':'resourceBundle'}", class="displayManager")
           span.projectName.octicon.octicon-file-code {{msg.projectName}}
         div.searchBar(canny-mod='searchBar', canny-var='root')
-          input(type='text', placeholder="Enter search term" canny-mod='searchBar', canny-var='input')
-          button(canny-mod='searchBar', canny-var='button') Search
+          input(type='text', minlength="3", placeholder="Search (3 chars minimum)" canny-mod='searchBar', canny-var='input')
+          button(canny-mod='searchBar', canny-var='button') Find
         div.user-options-container
           span.auth-userName {{msg.userName}}
           span.auth-logout-btn.octicon.octicon-sign-out(canny-mod='auth', canny-var="logoutButton", title="logout")

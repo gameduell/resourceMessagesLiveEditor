@@ -1656,6 +1656,7 @@ body.login form button {
 .searchResults section {
   padding-top: 2%;
   width: 80%;
+  max-width: 80em;
   height: 98%;
 }
 .searchResults section h2 {
@@ -1783,10 +1784,21 @@ body.login form button {
   height: 2em;
 }
 .searchBar input {
-  margin: 0 0.1em 0 0;
+  margin: 0 0.2em 0 0;
+  padding: 0 0.5em;
+  min-width: 12em;
 }
-.searchBar input:focus {
+.searchBar input:focus:invalid {
+  background-image: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.4));
+}
+.searchBar button,
+.searchBar input {
   outline: none;
+  border: none;
+  border-radius: 1px;
+}
+.searchBar button {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
 }
 .searchBar.show {
   display: inline-flex;
