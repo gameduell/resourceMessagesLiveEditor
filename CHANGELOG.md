@@ -94,3 +94,15 @@
 
 # 1.0.5
 - applied fixed order of language-columns in translation view
+
+# 1.1.0
+- added search feature
+
+# 1.1.1
+- search enhancements
+    - show amount of matching results
+    - show list of languages the search term ist found in
+    - restrict search to terms having greater equals 3 characters
+
+# 1.1.2
+- added checkbox to toggle case-sensitivity on search results

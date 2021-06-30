@@ -1672,15 +1672,26 @@ body.login form button {
 .searchResults section .term {
   color: yellow;
 }
-.searchResults section .found-languages {
+.searchResults section .search-options {
+  display: flex;
+  align-items: flex-end;
+  justify-items: center;
   margin: 0.5em 0;
 }
-.searchResults section .found-languages .language-switch .lang-button {
+.searchResults section .search-options .languages {
+  flex-grow: 1;
+}
+.searchResults section .search-options .languages .language-switch .lang-button {
   display: inline-block;
   margin: 0.2em;
   border-radius: 4px;
   padding: 0.3em 0.5em;
   background: rgba(128, 128, 128, 0.9);
+}
+.searchResults section .search-options .filters .checkboxes {
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }
 .searchResults section .results-list {
   position: relative;
@@ -1725,7 +1736,7 @@ body.login form button {
   text-shadow: 0 0 0 #fff;
 }
 .searchResults section .errorMessage::before {
-  content: ' : ';
+  content: " : ";
   color: #fff;
 }
 .searchResults section button.close {
@@ -1736,16 +1747,16 @@ body.login form button {
   border: none;
   vertical-align: baseline;
   color: #fff;
-  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  margin: 0 .25em 0 0;
-  padding: .78571429em 1.5em;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  margin: 0 0.25em 0 0;
+  padding: 0.78571429em 1.5em;
   text-transform: none;
   text-shadow: none;
   line-height: 1em;
   font-style: normal;
   text-align: center;
   text-decoration: none;
-  border-radius: .28571429rem;
+  border-radius: 0.28571429rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1763,7 +1774,7 @@ body.login form button {
   margin: 2em 0;
 }
 .searchResults section .button-section button + button {
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 .searchResults section button.close:hover {
   box-shadow: 0 0 0 2px #27d1ec inset;
