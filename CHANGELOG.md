@@ -106,3 +106,6 @@
 
 # 1.1.2
 - added checkbox to toggle case-sensitivity on search results
+
+# 1.1.3
+- added loading state to show while search is in progress
