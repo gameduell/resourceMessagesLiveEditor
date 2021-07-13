@@ -1814,6 +1814,50 @@ body.login form button {
 .searchBar.show {
   display: inline-flex;
 }
+.loadingModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  color: white;
+}
+.loadingModal .loading-spinner {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+.loadingModal .loading-spinner::after {
+  content: ' ';
+  background-image: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 40 40">\
+      <style> /* ...YO DAWG... */ circle { animation: 4s a infinite linear, 3s o infinite linear; }\
+      @keyframes a {from{stroke-dasharray:100 0}50%25{stroke-dasharray:0 100}to{stroke-dasharray:100 0}}\
+      @keyframes o {from{stroke-dashoffset:75}to{stroke-dashoffset:375}}\
+      <%2Fstyle><circle r="15.9154943092" stroke-width="7" fill="none" stroke="snow" />\
+      </svg>');
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 2.5em;
+  height: 2.5em;
+  background-size: 2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+.loadingModal.show {
+  display: flex;
+}
 .flag-icon {
   position: relative;
   display: inline-block;

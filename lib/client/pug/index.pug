@@ -63,6 +63,9 @@ html
     div(style='display: none', canny-mod='displayManager', canny-var="{'overlay':'JSONImportView'}")
       include JsonImportOverlay
 
+    div.loadingModal(canny-mod='loadingModal')
+      include loadingModal
+
     footer.footer
       .version-print Version: #{version}
       a(href='https://confluence.gameduell.de/display/DEV/Translation+Tool', target='_blank') About
