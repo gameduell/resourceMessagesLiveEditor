@@ -109,3 +109,6 @@
 
 # 1.1.3
 - added loading state to show while search is in progress
+
+# 1.1.4
+- added pagination to search results modal

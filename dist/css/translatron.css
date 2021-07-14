@@ -1662,6 +1662,7 @@ body.login form button {
 .searchResults section h2 {
   text-align: center;
   font-size: 2em;
+  margin: 0.5em 0;
 }
 .searchResults section h3 {
   font-size: 1.5em;
@@ -1739,6 +1740,31 @@ body.login form button {
   content: " : ";
   color: #fff;
 }
+.searchResults section .pagination {
+  display: block;
+  padding-top: 0.5em;
+  width: 100%;
+  text-align: center;
+}
+.searchResults section .pagination .page-button {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.25em;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 0.25em 0;
+  width: 2em;
+  text-align: center;
+}
+.searchResults section .pagination .page-button.active {
+  border-color: yellow;
+  color: black;
+  background-color: yellow;
+}
+.searchResults section .pagination .page-button:hover:not(.active) {
+  border-color: #28e4ff;
+  color: #28e4ff;
+}
 .searchResults section button.close {
   cursor: pointer;
   display: inline-block;
@@ -1771,7 +1797,7 @@ body.login form button {
 .searchResults section .button-section {
   display: flex;
   justify-content: center;
-  margin: 2em 0;
+  margin: 1em 0 0;
 }
 .searchResults section .button-section button + button {
   margin-left: 0.5em;

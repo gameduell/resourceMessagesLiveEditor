@@ -27,6 +27,7 @@
     h2 {
       text-align: center;
       font-size: 2em;
+      margin: 0.5em 0;
     }
     h3 {
       font-size: 1.5em;
@@ -112,6 +113,32 @@
       }
     }
 
+    .pagination {
+      display: block;
+      padding-top: 0.5em;
+      width: 100%;
+      text-align: center;
+      .page-button {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0.25em;
+        border: 1px solid white;
+        border-radius: 3px;
+        padding: 0.25em 0;
+        width: 2em;
+        text-align: center;
+        &.active {
+          border-color: yellow;
+          color: black;
+          background-color: yellow;
+        }
+        &:hover:not(.active) {
+          border-color: #28e4ff;
+          color: #28e4ff;
+        }
+      }
+    }
+
     button.close {
       cursor: pointer;
       display: inline-block;
@@ -146,7 +173,7 @@
     .button-section {
       display: flex;
       justify-content: center;
-      margin: 2em 0;
+      margin: 1em 0 0;
       button + button {
         margin-left: 0.5em;
       }

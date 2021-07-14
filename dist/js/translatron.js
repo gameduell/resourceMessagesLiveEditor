@@ -210,7 +210,7 @@ module.exports = {
     onLoadProject: applyProjectData
 };
 
-},{"../uiEventManager.js":24,"canny":70}],5:[function(require,module,exports){
+},{"../uiEventManager.js":24,"canny":71}],5:[function(require,module,exports){
 'use strict';
 
 var canny = require('canny'),
@@ -260,7 +260,7 @@ module.exports = {
     onLoadProject: applyProjectData
 };
 
-},{"../uiEventManager.js":24,"canny":70}],6:[function(require,module,exports){
+},{"../uiEventManager.js":24,"canny":71}],6:[function(require,module,exports){
 'use strict';
 
 var async = require('canny/mod/async'),
@@ -277,7 +277,7 @@ auth.onLogout(function () {
 
 module.exports = {};
 
-},{"canny":70,"canny/mod/async":71}],7:[function(require,module,exports){
+},{"canny":71,"canny/mod/async":72}],7:[function(require,module,exports){
 'use strict';
 
 var breadcrumb = require('../uiModules/breadcrumb'),
@@ -316,7 +316,7 @@ module.exports = {
     }
 };
 
-},{"../trade":23,"../uiEventManager":24,"../uiModules/breadcrumb":29,"canny":70}],8:[function(require,module,exports){
+},{"../trade":23,"../uiEventManager":24,"../uiModules/breadcrumb":29,"canny":71}],8:[function(require,module,exports){
 'use strict';
 
 var createNewProject = require('canny').createNewProject,
@@ -343,7 +343,7 @@ module.exports = {
     }
 };
 
-},{"../trade":23,"canny":70}],9:[function(require,module,exports){
+},{"../trade":23,"canny":71}],9:[function(require,module,exports){
 'use strict';
 
 var anchorMenu = require('canny').anchorMenu,
@@ -413,7 +413,7 @@ module.exports = {
     }
 };
 
-},{"../uiEventManager":24,"../uiModules/translationView":52,"canny":70}],10:[function(require,module,exports){
+},{"../uiEventManager":24,"../uiModules/translationView":53,"canny":71}],10:[function(require,module,exports){
 'use strict';
 
 var whisker = require('canny/mod/whisker');
@@ -544,7 +544,7 @@ module.exports = {
     }
 };
 
-},{"../../../ERRORS":1,"../trade":23,"canny":70,"canny/mod/whisker":74}],11:[function(require,module,exports){
+},{"../../../ERRORS":1,"../trade":23,"canny":71,"canny/mod/whisker":75}],11:[function(require,module,exports){
 'use strict';
 
 var canny = require('canny');
@@ -582,7 +582,7 @@ module.exports = {
     }
 };
 
-},{"canny":70}],12:[function(require,module,exports){
+},{"canny":71}],12:[function(require,module,exports){
 'use strict';
 
 var canny = require('canny'),
@@ -827,7 +827,7 @@ module.exports = {
     onLoadProject: applyProjectData
 };
 
-},{"../events.js":19,"../trade.js":23,"../uiEventManager.js":24,"canny":70,"dom-opts":84}],13:[function(require,module,exports){
+},{"../events.js":19,"../trade.js":23,"../uiEventManager.js":24,"canny":71,"dom-opts":85}],13:[function(require,module,exports){
 'use strict';
 
 var projectOverview = require('canny').projectOverview,
@@ -971,7 +971,7 @@ var projectOverviewController = function () {
 
 module.exports = projectOverviewController;
 
-},{"../Toast.js":3,"../events.js":19,"../trade.js":23,"../uiEventManager.js":24,"./moveProjectComponent":10,"canny":70}],14:[function(require,module,exports){
+},{"../Toast.js":3,"../events.js":19,"../trade.js":23,"../uiEventManager.js":24,"./moveProjectComponent":10,"canny":71}],14:[function(require,module,exports){
 "use strict";
 
 var canny = require("canny");
@@ -1001,7 +1001,7 @@ searchBar.onSearch(function () {
 
 module.exports = {};
 
-},{"../trade":23,"../uiModules/searchResults":50,"canny":70}],15:[function(require,module,exports){
+},{"../trade":23,"../uiModules/searchResults":51,"canny":71}],15:[function(require,module,exports){
 'use strict';
 
 var textEditor = require('canny').textEditor,
@@ -1057,7 +1057,7 @@ module.exports = {
     }
 };
 
-},{"../Toast.js":3,"../events.js":19,"../trade.js":23,"canny":70}],16:[function(require,module,exports){
+},{"../Toast.js":3,"../events.js":19,"../trade.js":23,"canny":71}],16:[function(require,module,exports){
 'use strict';
 
 var canny = require("canny"),
@@ -1558,7 +1558,7 @@ module.exports = {
     }
 };
 
-},{"../events.js":19,"../trade.js":23,"../uiEventManager.js":24,"../uiModules/translationView":52,"../uiModules/translationViewImageUpload":54,"../util/url":57,"../util/wordCounter":58,"canny":70,"dom-opts":84}],17:[function(require,module,exports){
+},{"../events.js":19,"../trade.js":23,"../uiEventManager.js":24,"../uiModules/translationView":53,"../uiModules/translationViewImageUpload":55,"../util/url":58,"../util/wordCounter":59,"canny":71,"dom-opts":85}],17:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1623,7 +1623,7 @@ module.exports = {
     onLoadProject: applyProjectData
 };
 
-},{"../uiEventManager.js":24,"canny":70}],18:[function(require,module,exports){
+},{"../uiEventManager.js":24,"canny":71}],18:[function(require,module,exports){
 'use strict';
 
 var trade = require('../trade'),
@@ -1705,7 +1705,7 @@ module.exports = {
     }
 };
 
-},{"../trade":23,"../uiEventManager":24,"../util/url":57}],19:[function(require,module,exports){
+},{"../trade":23,"../uiEventManager":24,"../util/url":58}],19:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1974,7 +1974,7 @@ trade.ready(function () {
     }
 });
 
-},{"./Toast.js":3,"./controller/JMBFUploaderController.js":4,"./controller/JsonImportController.js":5,"./controller/authController.js":6,"./controller/breadcrumbController.js":7,"./controller/createNewProjectController.js":8,"./controller/menuRightController.js":9,"./controller/pageHeaderController.js":11,"./controller/projectMainNavigationController.js":12,"./controller/projectOverviewController.js":13,"./controller/searchController.js":14,"./controller/textEditorController.js":15,"./controller/translationViewController.js":16,"./controller/uploadController.js":17,"./controller/urlManipulator.js":18,"./handleSessionTimeOut":20,"./textEditor.js":22,"./trade.js":23,"./uiModules/JMBFUploader.js":25,"./uiModules/JsonImport.js":26,"./uiModules/anchorMenu.js":27,"./uiModules/auth.js":28,"./uiModules/createNewProject.js":32,"./uiModules/displayManager.js":33,"./uiModules/imageViewer.js":35,"./uiModules/loadingModal":37,"./uiModules/menuRight.js":38,"./uiModules/projectMainNavigation.js":40,"./uiModules/projectOverview.js":41,"./uiModules/searchBar/index.js":42,"./uiModules/texts.js":51,"./uiModules/translationView.js":52,"./uiModules/translationViewDescription.js":53,"./uiModules/translationViewImageUpload.js":54,"./uiModules/upload.js":55,"./unicode.js":56,"canny":70,"canny-cookieManager-lib":69,"canny/mod/async":71,"canny/mod/flowControl":72,"canny/mod/repeat":73,"canny/mod/whisker":74,"dom-opts":84,"jasmine":99}],22:[function(require,module,exports){
+},{"./Toast.js":3,"./controller/JMBFUploaderController.js":4,"./controller/JsonImportController.js":5,"./controller/authController.js":6,"./controller/breadcrumbController.js":7,"./controller/createNewProjectController.js":8,"./controller/menuRightController.js":9,"./controller/pageHeaderController.js":11,"./controller/projectMainNavigationController.js":12,"./controller/projectOverviewController.js":13,"./controller/searchController.js":14,"./controller/textEditorController.js":15,"./controller/translationViewController.js":16,"./controller/uploadController.js":17,"./controller/urlManipulator.js":18,"./handleSessionTimeOut":20,"./textEditor.js":22,"./trade.js":23,"./uiModules/JMBFUploader.js":25,"./uiModules/JsonImport.js":26,"./uiModules/anchorMenu.js":27,"./uiModules/auth.js":28,"./uiModules/createNewProject.js":32,"./uiModules/displayManager.js":33,"./uiModules/imageViewer.js":35,"./uiModules/loadingModal":37,"./uiModules/menuRight.js":38,"./uiModules/projectMainNavigation.js":40,"./uiModules/projectOverview.js":41,"./uiModules/searchBar/index.js":42,"./uiModules/texts.js":52,"./uiModules/translationView.js":53,"./uiModules/translationViewDescription.js":54,"./uiModules/translationViewImageUpload.js":55,"./uiModules/upload.js":56,"./unicode.js":57,"canny":71,"canny-cookieManager-lib":70,"canny/mod/async":72,"canny/mod/flowControl":73,"canny/mod/repeat":74,"canny/mod/whisker":75,"dom-opts":85,"jasmine":100}],22:[function(require,module,exports){
 'use strict';
 
 /**
@@ -2546,7 +2546,7 @@ var trade = function () {
 
 module.exports = trade;
 
-},{"./events.js":19,"./uiModules/connectionLost/index.js":31,"canny":70,"dnode-weak-napi":82,"dom-opts":84,"shoe":136}],24:[function(require,module,exports){
+},{"./events.js":19,"./uiModules/connectionLost/index.js":31,"canny":71,"dnode-weak-napi":83,"dom-opts":85,"shoe":137}],24:[function(require,module,exports){
 "use strict";
 
 var uiEvent = function () {
@@ -2926,7 +2926,7 @@ module.exports = {
     }
 };
 
-},{"../util/url":57,"./translationView":52}],28:[function(require,module,exports){
+},{"../util/url":58,"./translationView":53}],28:[function(require,module,exports){
 'use strict';
 
 var _onLogout = function onLogout() {
@@ -3072,7 +3072,7 @@ module.exports = function (_ref) {
     };
 };
 
-},{"./index.html":30,"canny/mod/whisker":74}],32:[function(require,module,exports){
+},{"./index.html":30,"canny/mod/whisker":75}],32:[function(require,module,exports){
 'use strict';
 
 var _onCreateNewProject = function onCreateNewProject() {
@@ -3279,7 +3279,7 @@ module.exports = {
     getLang: getLang
 };
 
-},{"dom-opts":84}],35:[function(require,module,exports){
+},{"dom-opts":85}],35:[function(require,module,exports){
 'use strict';
 
 /*global ace */
@@ -3372,7 +3372,7 @@ var imageViewer = function () {
 
 module.exports = imageViewer;
 
-},{"../CONST.js":2,"../events.js":19,"dom-opts":84}],36:[function(require,module,exports){
+},{"../CONST.js":2,"../events.js":19,"dom-opts":85}],36:[function(require,module,exports){
 'use strict';
 
 function addEdit(node, fc) {
@@ -3838,7 +3838,7 @@ var projectMainNavigation = function () {
 
 module.exports = projectMainNavigation;
 
-},{"./flag":34,"./texts":51,"canny":70}],41:[function(require,module,exports){
+},{"./flag":34,"./texts":52,"canny":71}],41:[function(require,module,exports){
 'use strict';
 
 var projectOverview = function () {
@@ -4109,18 +4109,21 @@ module.exports = "<h2>Found <span class=\"term\">{{item.title}}</span> in <span>
 module.exports = "<li class=\"key-item\">\n    <div class=\"lang\"><span class=\"flag-icon flag-icon-{{item.lang}} icon octicon\"></span></div>\n    <div class=\"key\"><a href=\"{{item.url}}\">{{item.key}}</a></div>\n    <div class=\"text\">{{item.text}}</div>\n</li>";
 
 },{}],46:[function(require,module,exports){
-module.exports = "<div class=\"lang-button\">\n    <span class=\"flag-icon flag-icon-{{item.lang}} icon octicon\"></span>\n</div>";
+module.exports = "<div class=\"lang-button\" title=\"{{item.lang}}\">\n    <span class=\"flag-icon flag-icon-{{item.lang}} icon octicon\"></span>\n</div>";
 
 },{}],47:[function(require,module,exports){
 module.exports = "<li class=\"project-item\">\n  <h3>No matches found.</h3>\n</li>\n";
 
 },{}],48:[function(require,module,exports){
-module.exports = "<li class=\"project-item\">\n    <h3>{{item.project_id}}</h3>\n    <ul class=\"key-list\">\n        <!-- KeyItem.html inserted dynmically -->\n    </ul>\n</li>";
+module.exports = "<div class=\"page-button\">\n    {{item.pageNumber}}\n</div>";
 
 },{}],49:[function(require,module,exports){
-module.exports = "<div class=\"searchResults\">\n  <section>\n    <i class=\"octicon octicon-search\"></i>\n    <div class=\"headline\">\n      <!-- Headline.html -->\n    </div>\n    <div class=\"search-options\">\n      <div class=\"languages\">\n        <span>Search term was found in following languages:</span>\n        <div class=\"language-switch\">\n          <!-- LangButton.html inserted dynmically -->\n        </div>\n      </div>\n      <div class=\"filters\">\n        <!-- Filters.html inserted dynmically -->\n      </div>\n    </div>\n    <ul class=\"results-list\">\n      <!-- ProjectItem.html inserted dynmically -->\n    </ul>\n    <div class=\"button-section\">\n      <button class=\"close\" wk-bind=\"item.close\" title=\"Close modal\">close</button>\n    </div>\n  </section>\n</div>";
+module.exports = "<li class=\"project-item\">\n    <h3>{{item.project_id}}</h3>\n    <ul class=\"key-list\">\n        <!-- KeyItem.html inserted dynmically -->\n    </ul>\n</li>";
 
 },{}],50:[function(require,module,exports){
+module.exports = "<div class=\"searchResults\">\n  <section>\n    <i class=\"octicon octicon-search\"></i>\n    <div class=\"headline\">\n      <!-- Headline.html -->\n    </div>\n    <div class=\"search-options\">\n      <div class=\"languages\">\n        <span>Search term was found in following languages:</span>\n        <div class=\"language-switch\">\n          <!-- LangButton.html inserted dynmically -->\n        </div>\n      </div>\n      <div class=\"filters\">\n        <!-- Filters.html inserted dynmically -->\n      </div>\n    </div>\n    <ul class=\"results-list\">\n      <!-- ProjectItem.html inserted dynmically -->\n    </ul>\n    <ul class=\"pagination\">\n      <!-- PageButton.html inserted dynmically -->\n    </ul>\n    <div class=\"button-section\">\n      <button class=\"close\" wk-bind=\"item.close\" title=\"Close modal\">close</button>\n    </div>\n  </section>\n</div>";
+
+},{}],51:[function(require,module,exports){
 "use strict";
 
 var whisker = require("canny/mod/whisker");
@@ -4132,6 +4135,7 @@ var ProjectItem = require("./ProjectItem.html");
 var KeyItem = require("./KeyItem.html");
 var NoMatches = require("./NoMatches.html");
 var LangButton = require("./LangButton.html");
+var PageButton = require("./PageButton.html");
 
 module.exports = function (_ref) {
   var onClose = _ref.onClose;
@@ -4150,80 +4154,160 @@ module.exports = function (_ref) {
 
   var checkboxCase = filters.querySelector("#filter-casesensitive");
   checkboxCase.addEventListener("change", function (event) {
-    results && _render(results);
+    currentPage = 0;
+    results && renderPage(results);
   });
 
-  function _render(data) {
+  var pagination = content.querySelector(".pagination");
+  var ENTRIES_PER_PAGE = 10;
+  var currentPage = 0;
+
+  function filterCaseSensitive(projects, searchTerm, isSensitive) {
+    return projects.map(function (item) {
+      item.results = item.results.filter(function (result) {
+        return !isSensitive || isSensitive && result.text.indexOf(searchTerm) !== -1;
+      });
+      return item;
+    }).filter(function (item) {
+      return item.results.length > 0;
+    });
+  }
+
+  function getMetaData(entries) {
+    var resultsCounted = 0;
+    var languages = [];
+    entries.forEach(function (item) {
+      item.results.forEach(function (result) {
+        var lang = flags.getLang(result.lang);
+        if (languages.indexOf(lang) === -1) {
+          languages.push(lang);
+        }
+        resultsCounted++;
+      });
+    });
+    return {
+      resultsCounted: resultsCounted,
+      languages: languages
+    };
+  }
+
+  function renderHeader(data, htmlElement) {
+    whisker.add(htmlElement, {
+      title: data.searchTerm,
+      resultsCounted: data.resultsCounted,
+      close: function close(n) {
+        return n.addEventListener("click", onClose);
+      }
+    });
+  }
+
+  function renderFlags(languages, htmlElement) {
+    // Render flags on top of results-list
+    languages.sort(function (a, b) {
+      return a < b ? -1 : 1;
+    }).forEach(function (lang) {
+      lang = flags.getLang(lang);
+      var langButton = document.createElement("div");
+      langButton.innerHTML = LangButton;
+      whisker.add(langButton, {
+        lang: lang
+      });
+      htmlElement.appendChild(langButton.children[0]);
+    });
+  }
+
+  function renderResults(items, rangeStart, rangeEnd, htmlList) {
+    items.filter(function (item, index) {
+      return index >= rangeStart && index < rangeEnd;
+    }).forEach(function (item) {
+      var htmlProject = document.createElement("div");
+      htmlProject.innerHTML = ProjectItem;
+      whisker.add(htmlProject, {
+        project_id: item.project_id
+      });
+
+      var keyList = htmlProject.querySelector(".key-list");
+
+      item.results.forEach(function (result) {
+        var htmlKey = document.createElement("div");
+        htmlKey.innerHTML = KeyItem;
+        var lang = flags.getLang(result.lang);
+        whisker.add(htmlKey, {
+          key: result.key,
+          url: result.url,
+          lang: lang,
+          text: result.text
+        });
+        keyList.appendChild(htmlKey.children[0]);
+      });
+
+      if (keyList.childElementCount > 0) {
+        htmlList.appendChild(htmlProject.children[0]);
+      }
+    });
+  }
+
+  function renderPagination(numPages, htmlElement) {
+    var _loop = function _loop(pageNumber) {
+      var wrapper = document.createElement("div");
+      wrapper.innerHTML = PageButton;
+
+      var button = wrapper.children[0];
+
+      whisker.add(button, {
+        pageNumber: pageNumber + 1
+      });
+
+      button.addEventListener("click", function () {
+        currentPage = pageNumber;
+        results && renderPage(results);
+      });
+
+      if (currentPage === pageNumber) {
+        button.classList.add("active");
+      }
+
+      htmlElement.appendChild(button);
+    };
+
+    for (var pageNumber = 0; pageNumber <= numPages; pageNumber++) {
+      _loop(pageNumber);
+    }
+  }
+
+  function renderPage(data) {
     results = data;
+
+    var clonedData = JSON.parse(JSON.stringify(results));
+    var projectEntries = clonedData.data;
+    var searchTerm = clonedData.search_term;
 
     headline.innerHTML = Headline;
     langSwitch.innerHTML = "";
     list.innerHTML = "";
+    pagination.innerHTML = "";
 
-    var isCaseSensitive = checkboxCase.checked;
-    var resultsCounted = 0;
-    var languages = [];
+    if (projectEntries.length > 0) {
+      var rangeStart = currentPage * ENTRIES_PER_PAGE;
+      var rangeEnd = (currentPage + 1) * ENTRIES_PER_PAGE;
 
-    var clonedData = JSON.parse(JSON.stringify(results));
-    var searchTerm = clonedData.search_term;
+      projectEntries = filterCaseSensitive(clonedData.data, searchTerm, checkboxCase.checked);
+      var metadata = getMetaData(projectEntries);
 
-    if (clonedData.data.length > 0) {
-      clonedData.data.forEach(function (item) {
-        var htmlProject = document.createElement("div");
-        htmlProject.innerHTML = ProjectItem;
-        whisker.add(htmlProject, {
-          project_id: item.project_id
-        });
-
-        var keyList = htmlProject.querySelector(".key-list");
-
-        item.results = item.results.filter(function (result) {
-          return !isCaseSensitive || isCaseSensitive && result.text.indexOf(searchTerm) !== -1;
-        });
-
-        item.results.forEach(function (result) {
-          var htmlKey = document.createElement("div");
-          htmlKey.innerHTML = KeyItem;
-          var lang = flags.getLang(result.lang);
-          whisker.add(htmlKey, {
-            key: result.key,
-            url: result.url,
-            lang: lang,
-            text: result.text
-          });
-          keyList.appendChild(htmlKey.children[0]);
-          resultsCounted++;
-
-          if (languages.indexOf(lang) === -1) {
-            languages.push(lang);
-            var langButton = document.createElement("div");
-            langButton.innerHTML = LangButton;
-            whisker.add(langButton, {
-              lang: lang
-            });
-            langSwitch.appendChild(langButton.children[0]);
-          }
-        });
-
-        if (keyList.childElementCount > 0) {
-          list.appendChild(htmlProject.children[0]);
-        }
-      });
+      renderHeader({ searchTerm: searchTerm, resultsCounted: metadata.resultsCounted }, content);
+      renderFlags(metadata.languages, langSwitch);
+      renderResults(projectEntries, rangeStart, rangeEnd, list);
+      var numPages = Math.floor(projectEntries.length / ENTRIES_PER_PAGE);
+      if (numPages > 0) {
+        renderPagination(numPages, pagination);
+      }
     } else {
+      renderHeader({ searchTerm: searchTerm, resultsCounted: 0 }, content);
       var htmlProject = document.createElement("div");
       htmlProject.innerHTML = NoMatches;
       list.appendChild(htmlProject.children[0]);
     }
 
-    whisker.add(content, {
-      title: searchTerm,
-      resultsCounted: resultsCounted,
-      close: function close(n) {
-        return n.addEventListener("click", onClose);
-      }
-    });
-
-    // node.classList.addClass('show');
     document.body.appendChild(content);
   }
 
@@ -4232,20 +4316,19 @@ module.exports = function (_ref) {
      * Show the module
      * @param {string} err - error code to print on the view
      */
-    render: function render(data) {
-      return _render(data);
-    },
+    render: renderPage,
     /**
      * Remove the module from ui
      */
     destroy: function destroy() {
-      // node.classList.removeClass('show');
+      pagination.innerHTML = "";
       document.body.removeChild(content);
+      currentPage = 0;
     }
   };
 };
 
-},{"../flag":34,"./Filters.html":43,"./Headline.html":44,"./KeyItem.html":45,"./LangButton.html":46,"./NoMatches.html":47,"./ProjectItem.html":48,"./index.html":49,"canny/mod/whisker":74}],51:[function(require,module,exports){
+},{"../flag":34,"./Filters.html":43,"./Headline.html":44,"./KeyItem.html":45,"./LangButton.html":46,"./NoMatches.html":47,"./PageButton.html":48,"./ProjectItem.html":49,"./index.html":50,"canny/mod/whisker":75}],52:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4296,7 +4379,7 @@ var texts = function () {
 
 module.exports = texts;
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 'use strict';
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -5259,7 +5342,7 @@ var translationView = function () {
 
 module.exports = translationView;
 
-},{"../util/wordCounter":58,"./flag.js":34,"./inputEditManager.js":36,"canny":70}],53:[function(require,module,exports){
+},{"../util/wordCounter":59,"./flag.js":34,"./inputEditManager.js":36,"canny":71}],54:[function(require,module,exports){
 'use strict';
 
 var node;
@@ -5281,7 +5364,7 @@ module.exports = {
     }
 };
 
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5382,7 +5465,7 @@ module.exports = {
     }
 };
 
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5426,7 +5509,7 @@ module.exports = {
     }
 };
 
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
 
 var unicode = function () {
@@ -5468,7 +5551,7 @@ module.exports = unicode;
 
 var table = ['\xC0', '\xC1', '\xC2', '\xC3', '\xC4', '\xC5', '\xC6', '\xC7', '\xC8', '\xC9', '\xCA', '\xCB', '\xCC', '\xCD', '\xCE', '\xCF', '\xD0', '\xD1', '\xD2', '\xD3', '\xD4', '\xD5', '\xD6', '\xD8', '\xD9', '\xDA', '\xDB', '\xDC', '\xDD', '\xDE', '\xDF', '\xE0', '\xE1', '\xE2', '\xE3', '\xE4', '\xE5', '\xE6', '\xE7', '\xE8', '\xE9', '\xEA', '\xEB', '\xEC', '\xED', '\xEE', '\xEF', '\xF0', '\xF1', '\xF2', '\xF3', '\xF4', '\xF5', '\xF6', '\xF8', '\xF9', '\xFA', '\xFB', '\xFC', '\xFD', '\xFE', '\xFF'];
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 'use strict';
 
 function getAnchor() {
@@ -5486,7 +5569,7 @@ module.exports = {
     }
 };
 
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 var regExPunc = new RegExp(/([\.,\s!;?:\"]|\{(.*?)\})+/gi);
@@ -5503,7 +5586,7 @@ module.exports.countWordsInString = function countWordsInString(str) {
     return 0;
 };
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -6013,7 +6096,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"object-assign":110,"util/":62}],60:[function(require,module,exports){
+},{"object-assign":111,"util/":63}],61:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -6038,14 +6121,14 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 (function (process,global){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -6635,7 +6718,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":61,"_process":115,"inherits":60}],63:[function(require,module,exports){
+},{"./support/isBuffer":62,"_process":116,"inherits":61}],64:[function(require,module,exports){
 'use strict';
 module.exports = balanced;
 function balanced(a, b, str) {
@@ -6699,7 +6782,7 @@ function range(a, b, str) {
   return result;
 }
 
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -6851,7 +6934,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 var concatMap = require('concat-map');
 var balanced = require('balanced-match');
 
@@ -7054,11 +7137,11 @@ function expand(str, isTop) {
 }
 
 
-},{"balanced-match":63,"concat-map":75}],66:[function(require,module,exports){
+},{"balanced-match":64,"concat-map":76}],67:[function(require,module,exports){
 
-},{}],67:[function(require,module,exports){
-arguments[4][66][0].apply(exports,arguments)
-},{"dup":66}],68:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
+arguments[4][67][0].apply(exports,arguments)
+},{"dup":67}],69:[function(require,module,exports){
 (function (Buffer){(function (){
 /*!
  * The buffer module from node.js, for the browser.
@@ -8879,7 +8962,7 @@ var hexSliceLookupTable = (function () {
 })()
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":64,"buffer":68,"ieee754":89}],69:[function(require,module,exports){
+},{"base64-js":65,"buffer":69,"ieee754":90}],70:[function(require,module,exports){
 /*global base.cookieHandler, canny */
 
 (function () {
@@ -9097,7 +9180,7 @@ var hexSliceLookupTable = (function () {
 
 }());
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 /*global */
 /*jslint browser: true*/
 /**
@@ -9257,7 +9340,7 @@ var hexSliceLookupTable = (function () {
     // export as module or bind to global
     if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) { module.exports = canny; } else {global.canny = canny; }
 }(this));
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 /*global canny */
 /*jslint browser: true*/
 
@@ -9605,7 +9688,7 @@ var hexSliceLookupTable = (function () {
     }
 
 }());
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 /*global canny */
 /*jslint browser: true*/
 
@@ -10117,7 +10200,7 @@ var hexSliceLookupTable = (function () {
     if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) { module.exports = flowControl; } else {canny.add('flowControl', flowControl('flowControl')); }
 
 }());
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 /*global canny */
 /*jslint browser: true*/
 
@@ -10628,7 +10711,7 @@ var hexSliceLookupTable = (function () {
 
 }());
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 /*global canny */
 /*jslint browser: true*/
 /**
@@ -11208,7 +11291,7 @@ var hexSliceLookupTable = (function () {
 
 }());
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports = function (xs, fn) {
     var res = [];
     for (var i = 0; i < xs.length; i++) {
@@ -11223,7 +11306,7 @@ var isArray = Array.isArray || function (xs) {
     return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 (function (Buffer){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -11334,7 +11417,7 @@ function objectToString(o) {
 }
 
 }).call(this)}).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":92}],77:[function(require,module,exports){
+},{"../../is-buffer/index.js":93}],78:[function(require,module,exports){
 var EventEmitter = require('events').EventEmitter;
 var scrubber = require('./lib/scrub');
 var objectKeys = require('./lib/keys');
@@ -11461,7 +11544,7 @@ Proto.prototype.apply = function (f, args) {
     catch (err) { this.emit('error', err) }
 };
 
-},{"./lib/foreach":78,"./lib/is_enum":79,"./lib/keys":80,"./lib/scrub":81,"events":85}],78:[function(require,module,exports){
+},{"./lib/foreach":79,"./lib/is_enum":80,"./lib/keys":81,"./lib/scrub":82,"events":86}],79:[function(require,module,exports){
 module.exports = function forEach (xs, f) {
     if (xs.forEach) return xs.forEach(f)
     for (var i = 0; i < xs.length; i++) {
@@ -11469,7 +11552,7 @@ module.exports = function forEach (xs, f) {
     }
 }
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 var objectKeys = require('./keys');
 
 module.exports = function (obj, key) {
@@ -11483,14 +11566,14 @@ module.exports = function (obj, key) {
     return false;
 };
 
-},{"./keys":80}],80:[function(require,module,exports){
+},{"./keys":81}],81:[function(require,module,exports){
 module.exports = Object.keys || function (obj) {
     var keys = [];
     for (var key in obj) keys.push(key);
     return keys;
 };
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 var traverse = require('traverse');
 var objectKeys = require('./keys');
 var forEach = require('./foreach');
@@ -11564,14 +11647,14 @@ Scrubber.prototype.unscrub = function (msg, f) {
     return args;
 };
 
-},{"./foreach":78,"./keys":80,"traverse":140}],82:[function(require,module,exports){
+},{"./foreach":79,"./keys":81,"traverse":141}],83:[function(require,module,exports){
 var dnode = require('./lib/dnode');
 
 module.exports = function (cons, opts) {
     return new dnode(cons, opts);
 };
 
-},{"./lib/dnode":83}],83:[function(require,module,exports){
+},{"./lib/dnode":84}],84:[function(require,module,exports){
 (function (process){(function (){
 var protocol = require('dnode-protocol');
 var Stream = require('stream');
@@ -11728,7 +11811,7 @@ dnode.prototype.destroy = function () {
 };
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115,"dnode-protocol":77,"jsonify":106,"stream":138}],84:[function(require,module,exports){
+},{"_process":116,"dnode-protocol":78,"jsonify":107,"stream":139}],85:[function(require,module,exports){
 /*global HTMLElement */
 /*jslint browser: true */
 
@@ -11849,7 +11932,7 @@ HTMLElement.prototype.domChildTags = function (tag) {
     });
     return tags;
 };
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -12153,7 +12236,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 (function (process){(function (){
 /*
  * exit
@@ -12198,7 +12281,7 @@ module.exports = function exit(exitCode, streams) {
 };
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115}],87:[function(require,module,exports){
+},{"_process":116}],88:[function(require,module,exports){
 (function (process){(function (){
 module.exports = realpath
 realpath.realpath = realpath
@@ -12268,7 +12351,7 @@ function unmonkeypatch () {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./old.js":88,"_process":115,"fs":67}],88:[function(require,module,exports){
+},{"./old.js":89,"_process":116,"fs":68}],89:[function(require,module,exports){
 (function (process){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -12575,7 +12658,7 @@ exports.realpath = function realpath(p, cache, cb) {
 };
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115,"fs":67,"path":112}],89:[function(require,module,exports){
+},{"_process":116,"fs":68,"path":113}],90:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -12662,7 +12745,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 (function (process){(function (){
 var wrappy = require('wrappy')
 var reqs = Object.create(null)
@@ -12720,9 +12803,9 @@ function slice (args) {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115,"once":111,"wrappy":146}],91:[function(require,module,exports){
-arguments[4][60][0].apply(exports,arguments)
-},{"dup":60}],92:[function(require,module,exports){
+},{"_process":116,"once":112,"wrappy":147}],92:[function(require,module,exports){
+arguments[4][61][0].apply(exports,arguments)
+},{"dup":61}],93:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -12745,7 +12828,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 /*
 Copyright (c) 2008-2018 Pivotal Labs
 
@@ -12937,7 +13020,7 @@ getJasmineRequireObj().ConsoleReporter = function() {
   return ConsoleReporter;
 };
 
-},{}],94:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 (function (__dirname){(function (){
 module.exports = require("./jasmine-core/jasmine.js");
 module.exports.boot = require('./jasmine-core/node_boot.js');
@@ -12978,7 +13061,7 @@ module.exports.files = {
 };
 
 }).call(this)}).call(this,"/node_modules/jasmine-core/lib")
-},{"./jasmine-core/jasmine.js":95,"./jasmine-core/node_boot.js":96,"fs":67,"path":112}],95:[function(require,module,exports){
+},{"./jasmine-core/jasmine.js":96,"./jasmine-core/node_boot.js":97,"fs":68,"path":113}],96:[function(require,module,exports){
 (function (process,global){(function (){
 /*
 Copyright (c) 2008-2018 Pivotal Labs
@@ -18568,7 +18651,7 @@ getJasmineRequireObj().version = function() {
 };
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":115}],96:[function(require,module,exports){
+},{"_process":116}],97:[function(require,module,exports){
 (function (global){(function (){
 /*
 Copyright (c) 2008-2018 Pivotal Labs
@@ -18613,7 +18696,7 @@ module.exports = function(jasmineRequire) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../console/console.js":93}],97:[function(require,module,exports){
+},{"../console/console.js":94}],98:[function(require,module,exports){
 module.exports = function(exitCode, platform, nodeVersion, exit, nodeExit) {
   if(isWindows(platform) && olderThan12(nodeVersion)) {
     nodeExit(exitCode);
@@ -18631,7 +18714,7 @@ function olderThan12(nodeVersion) {
   var version = nodeVersion.split('.');
   return parseInt(version[0].substr(1), 10) <= 0 && parseInt(version[1], 10) < 12;
 }
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 module.exports = exports = ConsoleSpecFilter;
 
 function ConsoleSpecFilter(options) {
@@ -18643,7 +18726,7 @@ function ConsoleSpecFilter(options) {
   };
 }
 
-},{}],99:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 (function (process){(function (){
 var path = require('path'),
     util = require('util'),
@@ -18848,11 +18931,11 @@ Jasmine.prototype.execute = function(files, filterString) {
 };
 
 }).call(this)}).call(this,require('_process'))
-},{"./exit":97,"./filters/console_spec_filter":98,"./printDeprecation":100,"./reporters/completion_reporter":101,"./reporters/console_reporter":102,"_process":115,"exit":86,"glob":104,"jasmine-core":94,"path":112,"util":145}],100:[function(require,module,exports){
+},{"./exit":98,"./filters/console_spec_filter":99,"./printDeprecation":101,"./reporters/completion_reporter":102,"./reporters/console_reporter":103,"_process":116,"exit":87,"glob":105,"jasmine-core":95,"path":113,"util":146}],101:[function(require,module,exports){
 module.exports = function(message) {
   console.warn('Deprecation warning: ' + message);
 };
-},{}],101:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = function() {
   var results = true;
   var onCompleteCallback = function() {};
@@ -18887,7 +18970,7 @@ module.exports = function() {
   };
 };
 
-},{}],102:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = exports = ConsoleReporter;
 
 var noopTimer = {
@@ -19129,7 +19212,7 @@ function ConsoleReporter() {
   }
 }
 
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 (function (process){(function (){
 exports.setopts = setopts
 exports.ownProp = ownProp
@@ -19367,7 +19450,7 @@ function childrenIgnored (self, path) {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115,"minimatch":109,"path":112,"path-is-absolute":113}],104:[function(require,module,exports){
+},{"_process":116,"minimatch":110,"path":113,"path-is-absolute":114}],105:[function(require,module,exports){
 (function (process){(function (){
 // Approach:
 //
@@ -20159,7 +20242,7 @@ Glob.prototype._stat2 = function (f, abs, er, stat, cb) {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./common.js":103,"./sync.js":105,"_process":115,"assert":59,"events":85,"fs":67,"fs.realpath":87,"inflight":90,"inherits":91,"minimatch":109,"once":111,"path":112,"path-is-absolute":113,"util":145}],105:[function(require,module,exports){
+},{"./common.js":104,"./sync.js":106,"_process":116,"assert":60,"events":86,"fs":68,"fs.realpath":88,"inflight":91,"inherits":92,"minimatch":110,"once":112,"path":113,"path-is-absolute":114,"util":146}],106:[function(require,module,exports){
 (function (process){(function (){
 module.exports = globSync
 globSync.GlobSync = GlobSync
@@ -20647,11 +20730,11 @@ GlobSync.prototype._makeAbs = function (f) {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./common.js":103,"./glob.js":104,"_process":115,"assert":59,"fs":67,"fs.realpath":87,"minimatch":109,"path":112,"path-is-absolute":113,"util":145}],106:[function(require,module,exports){
+},{"./common.js":104,"./glob.js":105,"_process":116,"assert":60,"fs":68,"fs.realpath":88,"minimatch":110,"path":113,"path-is-absolute":114,"util":146}],107:[function(require,module,exports){
 exports.parse = require('./lib/parse');
 exports.stringify = require('./lib/stringify');
 
-},{"./lib/parse":107,"./lib/stringify":108}],107:[function(require,module,exports){
+},{"./lib/parse":108,"./lib/stringify":109}],108:[function(require,module,exports){
 var at, // The index of the current character
     ch, // The current character
     escapee = {
@@ -20926,7 +21009,7 @@ module.exports = function (source, reviver) {
     }({'': result}, '')) : result;
 };
 
-},{}],108:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
     escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
     gap,
@@ -21082,7 +21165,7 @@ module.exports = function (value, replacer, space) {
     return str('', {'': value});
 };
 
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = minimatch
 minimatch.Minimatch = Minimatch
 
@@ -22007,7 +22090,7 @@ function regExpEscape (s) {
   return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 }
 
-},{"brace-expansion":65,"path":112}],110:[function(require,module,exports){
+},{"brace-expansion":66,"path":113}],111:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -22099,7 +22182,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],111:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 var wrappy = require('wrappy')
 module.exports = wrappy(once)
 module.exports.strict = wrappy(onceStrict)
@@ -22143,7 +22226,7 @@ function onceStrict (fn) {
   return f
 }
 
-},{"wrappy":146}],112:[function(require,module,exports){
+},{"wrappy":147}],113:[function(require,module,exports){
 (function (process){(function (){
 // .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
 // backported and transplited with Babel, with backwards-compat fixes
@@ -22449,7 +22532,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115}],113:[function(require,module,exports){
+},{"_process":116}],114:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -22473,7 +22556,7 @@ module.exports.posix = posix;
 module.exports.win32 = win32;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115}],114:[function(require,module,exports){
+},{"_process":116}],115:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -22522,7 +22605,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":115}],115:[function(require,module,exports){
+},{"_process":116}],116:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -22708,7 +22791,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 (function (global){(function (){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -23245,7 +23328,7 @@ process.umask = function() { return 0; };
 }(this));
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -23331,7 +23414,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -23418,16 +23501,16 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":117,"./encode":118}],120:[function(require,module,exports){
+},{"./decode":118,"./encode":119}],121:[function(require,module,exports){
 module.exports = require('./lib/_stream_duplex.js');
 
-},{"./lib/_stream_duplex.js":121}],121:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":122}],122:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -23559,7 +23642,7 @@ Duplex.prototype._destroy = function (err, cb) {
 
   pna.nextTick(cb, err);
 };
-},{"./_stream_readable":123,"./_stream_writable":125,"core-util-is":76,"inherits":91,"process-nextick-args":114}],122:[function(require,module,exports){
+},{"./_stream_readable":124,"./_stream_writable":126,"core-util-is":77,"inherits":92,"process-nextick-args":115}],123:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -23607,7 +23690,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":124,"core-util-is":76,"inherits":91}],123:[function(require,module,exports){
+},{"./_stream_transform":125,"core-util-is":77,"inherits":92}],124:[function(require,module,exports){
 (function (process,global){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -24629,7 +24712,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_stream_duplex":121,"./internal/streams/BufferList":126,"./internal/streams/destroy":127,"./internal/streams/stream":128,"_process":115,"core-util-is":76,"events":85,"inherits":91,"isarray":129,"process-nextick-args":114,"safe-buffer":135,"string_decoder/":130,"util":66}],124:[function(require,module,exports){
+},{"./_stream_duplex":122,"./internal/streams/BufferList":127,"./internal/streams/destroy":128,"./internal/streams/stream":129,"_process":116,"core-util-is":77,"events":86,"inherits":92,"isarray":130,"process-nextick-args":115,"safe-buffer":136,"string_decoder/":131,"util":67}],125:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -24844,7 +24927,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":121,"core-util-is":76,"inherits":91}],125:[function(require,module,exports){
+},{"./_stream_duplex":122,"core-util-is":77,"inherits":92}],126:[function(require,module,exports){
 (function (process,global,setImmediate){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -25534,7 +25617,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"./_stream_duplex":121,"./internal/streams/destroy":127,"./internal/streams/stream":128,"_process":115,"core-util-is":76,"inherits":91,"process-nextick-args":114,"safe-buffer":135,"timers":139,"util-deprecate":143}],126:[function(require,module,exports){
+},{"./_stream_duplex":122,"./internal/streams/destroy":128,"./internal/streams/stream":129,"_process":116,"core-util-is":77,"inherits":92,"process-nextick-args":115,"safe-buffer":136,"timers":140,"util-deprecate":144}],127:[function(require,module,exports){
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25614,7 +25697,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":135,"util":66}],127:[function(require,module,exports){
+},{"safe-buffer":136,"util":67}],128:[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -25689,17 +25772,17 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-},{"process-nextick-args":114}],128:[function(require,module,exports){
+},{"process-nextick-args":115}],129:[function(require,module,exports){
 module.exports = require('events').EventEmitter;
 
-},{"events":85}],129:[function(require,module,exports){
+},{"events":86}],130:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -25996,10 +26079,10 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":135}],131:[function(require,module,exports){
+},{"safe-buffer":136}],132:[function(require,module,exports){
 module.exports = require('./readable').PassThrough
 
-},{"./readable":132}],132:[function(require,module,exports){
+},{"./readable":133}],133:[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -26008,13 +26091,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":121,"./lib/_stream_passthrough.js":122,"./lib/_stream_readable.js":123,"./lib/_stream_transform.js":124,"./lib/_stream_writable.js":125}],133:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":122,"./lib/_stream_passthrough.js":123,"./lib/_stream_readable.js":124,"./lib/_stream_transform.js":125,"./lib/_stream_writable.js":126}],134:[function(require,module,exports){
 module.exports = require('./readable').Transform
 
-},{"./readable":132}],134:[function(require,module,exports){
+},{"./readable":133}],135:[function(require,module,exports){
 module.exports = require('./lib/_stream_writable.js');
 
-},{"./lib/_stream_writable.js":125}],135:[function(require,module,exports){
+},{"./lib/_stream_writable.js":126}],136:[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -26078,7 +26161,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":68}],136:[function(require,module,exports){
+},{"buffer":69}],137:[function(require,module,exports){
 var Stream = require('stream');
 var sockjs = require('sockjs-client');
 var resolve = require('url').resolve;
@@ -26143,7 +26226,7 @@ module.exports = function (u, cb) {
     return stream;
 };
 
-},{"sockjs-client":137,"stream":138,"url":141}],137:[function(require,module,exports){
+},{"sockjs-client":138,"stream":139,"url":142}],138:[function(require,module,exports){
 /* SockJS client, version 0.3.1.7.ga67f.dirty, http://sockjs.org, MIT License
 
 Copyright (c) 2011-2012 VMware, Inc.
@@ -28468,7 +28551,7 @@ if (typeof module === 'object' && module && module.exports) {
 // [*] End of lib/all.js
 
 
-},{}],138:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -28597,7 +28680,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":85,"inherits":91,"readable-stream/duplex.js":120,"readable-stream/passthrough.js":131,"readable-stream/readable.js":132,"readable-stream/transform.js":133,"readable-stream/writable.js":134}],139:[function(require,module,exports){
+},{"events":86,"inherits":92,"readable-stream/duplex.js":121,"readable-stream/passthrough.js":132,"readable-stream/readable.js":133,"readable-stream/transform.js":134,"readable-stream/writable.js":135}],140:[function(require,module,exports){
 (function (setImmediate,clearImmediate){(function (){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -28676,7 +28759,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this)}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":115,"timers":139}],140:[function(require,module,exports){
+},{"process/browser.js":116,"timers":140}],141:[function(require,module,exports){
 var traverse = module.exports = function (obj) {
     return new Traverse(obj);
 };
@@ -28992,7 +29075,7 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
     return key in obj;
 };
 
-},{}],141:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -29726,7 +29809,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":142,"punycode":116,"querystring":119}],142:[function(require,module,exports){
+},{"./util":143,"punycode":117,"querystring":120}],143:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -29744,7 +29827,7 @@ module.exports = {
   }
 };
 
-},{}],143:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 (function (global){(function (){
 
 /**
@@ -29815,11 +29898,11 @@ function config (name) {
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],144:[function(require,module,exports){
-arguments[4][61][0].apply(exports,arguments)
-},{"dup":61}],145:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 arguments[4][62][0].apply(exports,arguments)
-},{"./support/isBuffer":144,"_process":115,"dup":62,"inherits":91}],146:[function(require,module,exports){
+},{"dup":62}],146:[function(require,module,exports){
+arguments[4][63][0].apply(exports,arguments)
+},{"./support/isBuffer":145,"_process":116,"dup":63,"inherits":92}],147:[function(require,module,exports){
 // Returns a wrapper function that returns a wrapped callback
 // The wrapper function should do some stuff, and return a
 // presumably different callback function.
