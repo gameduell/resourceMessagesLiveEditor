@@ -703,7 +703,7 @@ footer.footer .version-print {
   position: relative;
   z-index: 1;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: .3em;
+  padding: 0.3em;
   margin: 0;
   box-sizing: border-box;
 }
@@ -723,8 +723,8 @@ footer.footer .version-print {
   position: relative;
   z-index: 2;
 }
-.translationView .keyField[disabled=true],
-.translationView .categoryField[disabled=true] {
+.translationView .keyField[disabled="true"],
+.translationView .categoryField[disabled="true"] {
   visibility: hidden;
 }
 .translationView .categoryField {
@@ -754,7 +754,7 @@ footer.footer .version-print {
   background-size: 1.5em 1.5em;
   box-sizing: border-box;
   border-radius: 2px;
-  padding: .5em;
+  padding: 0.5em;
   width: 100%;
 }
 .translationView .addNewKeyrow {
@@ -813,10 +813,10 @@ footer.footer .version-print {
   text-shadow: 0 0 0px #95c2ff, 0 0 0px #95c2ff, 0 0 0px #95c2ff;
 }
 .translationView h2:hover:before {
-  content: '\f05c';
+  content: "\f05c";
 }
 .translationView .categoryNode.c-anchorMenu-focus h2:before {
-  content: '\f05c';
+  content: "\f05c";
 }
 .translationView .categoryNode.c-anchorMenu-parent > .inputEditManager.wrap {
   position: relative;
@@ -829,7 +829,7 @@ footer.footer .version-print {
   justify-content: space-between;
   align-content: flex-start;
   margin: 0.5em 1em;
-  padding: .5em;
+  padding: 0.5em;
   clear: both;
 }
 .translationView .row.c-removed {
@@ -856,7 +856,7 @@ footer.footer .version-print {
 .translationView .row .translationContainer .data {
   position: relative;
   flex: auto;
-  margin: 0 .5em;
+  margin: 0 0.5em;
   flex-direction: column;
 }
 .translationView .row .translationContainer .textInformation {
@@ -864,6 +864,29 @@ footer.footer .version-print {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.translationView .row .translationContainer .textInformation-nbspSwitch {
+  cursor: pointer;
+  display: none;
+  width: 1em;
+  height: 1em;
+}
+.translationView .row .translationContainer .textInformation-nbspSwitch:before {
+  color: orange;
+}
+.translationView .row .translationContainer .has-nbsp .textInformation-nbspSwitch {
+  display: inline-block;
+}
+.translationView .row .translationContainer .has-nbsp .textInformation-nbspSwitch.active:before {
+  color: #3f6eb5;
+}
+.translationView .row .translationContainer .has-nbsp .textField {
+  border-color: orange;
+}
+.translationView .row .translationContainer .has-nbsp .textField::selection {
+  color: #fff;
+  background-color: #3f6eb5;
 }
 .translationView .row > div {
   vertical-align: middle;
@@ -885,7 +908,7 @@ footer.footer .version-print {
   flex: 30 0 0;
   padding-right: 6.5em;
   padding-left: 1.5em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 .translationView .row .data.key::before {
   position: absolute;
@@ -1867,7 +1890,7 @@ body.login form button {
   content: ' ';
   background-image: url('data:image/svg+xml,\
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 40 40">\
-      <style> /* ...YO DAWG... */ circle { animation: 4s a infinite linear, 3s o infinite linear; }\
+      <style> circle { animation: 4s a infinite linear, 3s o infinite linear; }\
       @keyframes a {from{stroke-dasharray:100 0}50%25{stroke-dasharray:0 100}to{stroke-dasharray:100 0}}\
       @keyframes o {from{stroke-dashoffset:75}to{stroke-dashoffset:375}}\
       <%2Fstyle><circle r="15.9154943092" stroke-width="7" fill="none" stroke="snow" />\

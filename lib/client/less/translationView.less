@@ -1,9 +1,8 @@
 .translationView {
-
-  .octicon.octicon-pencil{
+  .octicon.octicon-pencil {
     display: none;
   }
-  &.c-enableEditorMode .octicon.octicon-pencil{
+  &.c-enableEditorMode .octicon.octicon-pencil {
     display: block;
   }
 
@@ -22,14 +21,14 @@
   @import "languageHideShow";
   @import "imageUpload";
 
-  .octicon:before{
+  .octicon:before {
     color: rgba(117, 117, 117, 0.3);
   }
   #resourceBundleTable {
     margin-bottom: 70px;
   }
   #titleText,
-  #titleTextTranslation{
+  #titleTextTranslation {
     height: 40px;
   }
   .textField {
@@ -38,8 +37,8 @@
     min-height: 6.5em;
     position: relative;
     z-index: 1;
-    background-color: rgba(255,255,255,0.8);
-    padding: .3em;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.3em;
     margin: 0;
     box-sizing: border-box;
   }
@@ -56,7 +55,7 @@
   .keyField,
   .categoryField {
     width: 100%;
-    &[disabled=true] {
+    &[disabled="true"] {
       visibility: hidden;
     }
     position: relative;
@@ -65,7 +64,7 @@
   .categoryField {
     font-size: 0.75em;
   }
-  .addKeyButton{
+  .addKeyButton {
     padding: 0.2em;
     min-width: 3em;
   }
@@ -88,7 +87,7 @@
           background-size: 1.5em 1.5em;
           box-sizing: border-box;
           border-radius: 2px;
-          padding: .5em;
+          padding: 0.5em;
           width: 100%;
         }
       }
@@ -118,9 +117,8 @@
     }
   }
 
-  .c-anchorMenu-focus{
+  .c-anchorMenu-focus {
     background-color: rgb(241, 250, 255);
-
   }
 
   .headlineWrapper {
@@ -150,23 +148,23 @@
         border-bottom: 1px solid #303030;
       }
     }
-    &.icon{
+    &.icon {
       position: relative;
     }
-    &:before{
+    &:before {
       position: absolute;
       left: 0.3em;
     }
     &:hover {
       text-shadow: 0 0 0px #95c2ff, 0 0 0px #95c2ff, 0 0 0px #95c2ff;
-      &:before{
-        content:'\f05c';
+      &:before {
+        content: "\f05c";
       }
     }
   }
   .categoryNode.c-anchorMenu-focus h2 {
-    &:before{
-      content:'\f05c';
+    &:before {
+      content: "\f05c";
     }
   }
 
@@ -182,14 +180,14 @@
     justify-content: space-between;
     align-content: flex-start;
     margin: 0.5em 1em;
-    padding: .5em;
+    padding: 0.5em;
     clear: both;
 
     &.c-removed {
       background-color: red !important;
     }
 
-    .remove-button{
+    .remove-button {
       position: relative;
       width: 1em;
       height: 1em;
@@ -200,7 +198,7 @@
       cursor: pointer;
     }
 
-    .translationContainer{
+    .translationContainer {
       display: flex;
       width: 100%;
       box-sizing: border-box;
@@ -210,15 +208,41 @@
       .data {
         position: relative;
         flex: auto;
-        margin: 0 .5em;
+        margin: 0 0.5em;
         flex-direction: column;
       }
-      .textInformation{
+      .textInformation {
         position: relative;
         width: 100%;
         display: flex;
         justify-content: space-between;
-        &-wordCountLabel, &-charCountLabel{}
+        align-items: center;
+      }
+      .textInformation-nbspSwitch {
+        cursor: pointer;
+        display: none;
+        width: 1em;
+        height: 1em;
+        &:before {
+          color: orange;
+        }
+      }
+      .has-nbsp {
+        .textInformation-nbspSwitch {
+          display: inline-block;
+          &.active {
+            &:before {
+              color: #3f6eb5;
+            }
+          }
+        }
+        .textField {
+          border-color: orange;
+          &::selection {
+            color: #fff;
+            background-color: #3f6eb5;
+          }
+        }
       }
     }
     > div {
@@ -237,13 +261,13 @@
         opacity: 1;
       }
     }
-    .data.key{
+    .data.key {
       flex: 30 0 0;
       padding-right: 6.5em;
       padding-left: 1.5em;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
 
-      &::before{
+      &::before {
         position: absolute;
         left: 4px;
         top: 5px;
@@ -255,13 +279,13 @@
       }
     }
 
-    .textEditor-main-wrap{
-      margin:0;
+    .textEditor-main-wrap {
+      margin: 0;
     }
   }
-  .textEditor-main-wrap{
+  .textEditor-main-wrap {
     margin: 0 1em;
-    .js-text{
+    .js-text {
       margin: 0.4em 0;
     }
   }
