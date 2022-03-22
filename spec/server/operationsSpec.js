@@ -92,7 +92,8 @@ describe('operations', () => {
                         callback(null, {
                             projectId : expectedProjectId
                         });
-                    }
+                    },
+                    invalidateSearch : function() {}
                 };
 
                 operations = require('../../lib/server/operations.js')(dao, changesNotifier);
@@ -130,7 +131,8 @@ describe('operations', () => {
                 dao = {
                     createNewProject : function(projectParentDirId, projectName, projectDefaults, callback) {
                         callback(new Error());
-                    }
+                    },
+                    invalidateSearch : function() {}
                 };
                 operations = require('../../lib/server/operations.js')(dao, changesNotifier);
 

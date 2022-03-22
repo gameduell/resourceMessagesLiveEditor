@@ -112,3 +112,15 @@
 
 # 1.1.4
 - added pagination to search results modal
+
+# 1.1.5
+- modified json exporter to replace ordinary whitespaces before exclamation and question marks with non-breaking spaces (for French only)
+
+# 1.1.6
+- modified Java message-bundle exporter to replace ordinary whitespaces before exclamation and question marks with non-breaking spaces (for French only)
+
+# 1.2.0
+- added highlighting of textareas containing non-breaking spaces
+
+# 1.3.0
+- added language-filter for search-results

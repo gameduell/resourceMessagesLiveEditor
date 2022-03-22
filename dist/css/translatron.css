@@ -1706,11 +1706,15 @@ body.login form button {
   flex-grow: 1;
 }
 .searchResults section .search-options .languages .language-switch .lang-button {
+  cursor: pointer;
   display: inline-block;
   margin: 0.2em;
   border-radius: 4px;
   padding: 0.3em 0.5em;
+}
+.searchResults section .search-options .languages .language-switch .lang-button.active {
   background: rgba(128, 128, 128, 0.9);
+  box-shadow: 0px 0px 2px inset #000000;
 }
 .searchResults section .search-options .filters .checkboxes {
   display: flex;

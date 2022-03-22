@@ -63,7 +63,7 @@
     "browserify": "^15.2.0",
     "canny": "^0.2.1",
     "canny-cookieManager-lib": "^1.1.1",
-    "dom-opts": "git://github.com/eightyfour/dom-opts.git",
+    "dom-opts": "https://github.com/eightyfour/dom-opts.git",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "karma": "^2.0.0",
