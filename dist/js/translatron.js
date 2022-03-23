@@ -4234,7 +4234,7 @@ module.exports = function (_ref) {
         if (position === -1) {
           selectedLanguages.push(lang);
         } else {
-          selectedLanguages.splice(position, position + 1);
+          selectedLanguages.splice(position, 1);
         }
         currentPage = 0;
         results && renderPage(results);
