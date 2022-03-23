@@ -124,3 +124,6 @@
 
 # 1.3.0
 - added language-filter for search-results
+
+## 1.3.1
+- fixed click-handler on language buttons
