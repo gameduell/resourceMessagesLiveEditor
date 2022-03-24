@@ -456,4 +456,4 @@ Enabled by passing object named 'search' including property 'socket' holding pat
   },
   ...
 ```
-Be sure to start the search-service before Translatron itself.
+Be sure to start the search-service application before Translatron itself.

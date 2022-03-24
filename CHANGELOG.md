@@ -127,3 +127,6 @@
 
 ## 1.3.1
 - fixed click-handler on language buttons
+
+## 1.3.2
+- added highlighting the given search-term within the UI/modal

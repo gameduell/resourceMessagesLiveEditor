@@ -4106,7 +4106,7 @@ module.exports = "<div class=\"checkboxes\">\n    <label for=\"filter-casesensit
 module.exports = "<h2>Found <span class=\"term\">{{item.title}}</span> in <span>{{item.resultsCounted}}</span> text items.</h2>";
 
 },{}],45:[function(require,module,exports){
-module.exports = "<li class=\"key-item\">\n    <div class=\"lang\"><span class=\"flag-icon flag-icon-{{item.lang}} icon octicon\"></span></div>\n    <div class=\"key\"><a href=\"{{item.url}}\">{{item.key}}</a></div>\n    <div class=\"text\">{{item.text}}</div>\n</li>";
+module.exports = "<li class=\"key-item\">\n    <div class=\"lang\"><span class=\"flag-icon flag-icon-{{item.lang}} icon octicon\"></span></div>\n    <div class=\"key\"><a href=\"{{item.url}}\">{{item.key}}</a></div>\n    <div class=\"text\"></div>\n</li>";
 
 },{}],46:[function(require,module,exports){
 module.exports = "<div class=\"lang-button\" title=\"{{item.country}}\">\n    <span class=\"flag-icon flag-icon-{{item.lang}} icon octicon\"></span>\n</div>";
@@ -4163,6 +4163,14 @@ module.exports = function (_ref) {
   var ENTRIES_PER_PAGE = 10;
   var currentPage = 0;
 
+  /**
+   * Filter search results for given languages
+   *
+   * @param   {Object[]}  projects   List of search result data separated into Translatron projects
+   * @param   {String[]}  languages  List of selected languages, i.e. reflects the checked language-flags in the UI
+   *
+   * @return  {Object}               Filtered search-result data
+   */
   function filterLanguages(projects, languages) {
     var cloneData = JSON.parse(JSON.stringify(projects));
     return cloneData.map(function (item) {
@@ -4175,6 +4183,15 @@ module.exports = function (_ref) {
     });
   }
 
+  /**
+   * Filter search-results for case-sensitive
+   *
+   * @param   {Object[]}  projects   List of search result data separated into Translatron projects
+   * @param   {String}    searchTerm   Search-term the user was entering into the search-input within the page's header
+   * @param   {Boolean}   isSensitive  Flag to determine whether to filter the data for exactly the search-term (false by default)
+   *
+   * @return  {Object}                 Filtered search-result data
+   */
   function filterCaseSensitive(projects, searchTerm, isSensitive) {
     var cloneData = JSON.parse(JSON.stringify(projects));
     return cloneData.map(function (item) {
@@ -4187,10 +4204,19 @@ module.exports = function (_ref) {
     });
   }
 
-  function getMetaData(entries) {
+  /**
+   * Create Metadata out of given search-result data,
+   * i.e. the languages the search-term appears in
+   * and the overall amount of translation-keys the term was found in
+   *
+   * @param   {Object[]}  projects     Map with search result data categorized by Translatron projects the term was found in
+   *
+   * @return  {Object}                 Object containing a list of language locales and a count of how many keys contain the search-term
+   */
+  function getMetaData(projects) {
     var resultsCounted = 0;
     var languages = [];
-    entries.forEach(function (item) {
+    projects.forEach(function (item) {
       item.results.forEach(function (result) {
         if (languages.indexOf(result.lang) === -1) {
           languages.push(result.lang);
@@ -4204,16 +4230,35 @@ module.exports = function (_ref) {
     };
   }
 
-  function renderHeader(data, htmlElement) {
+  /**
+   * Render the modal header UI containing the search-term and the amount of translation keys the search-term was found in
+   * Makes use of canny's whisker module, see https://github.com/eightyfour/canny/tree/master/mod for further info on this
+   *
+   * @param   {Object}       metaData     Data passed to whisker which will interpolate it into the DOM placeholders
+   * @param   {HTMLElement}  htmlElement  Container to render the given data into
+   *
+   * @return  {void}
+   */
+  function renderHeader(metaData, htmlElement) {
     whisker.add(htmlElement, {
-      title: data.searchTerm,
-      resultsCounted: data.resultsCounted,
+      title: metaData.searchTerm,
+      resultsCounted: metaData.resultsCounted,
       close: function close(n) {
         return n.addEventListener("click", onClose);
       }
     });
   }
 
+  /**
+   * Render UI buttons representing languages the search-term was found in
+   * whereas each button works rather like a checkbox, e.g. multiple buttons can be active,
+   * filtering the search-restul data for just the active buttons/checkboxes
+   *
+   * @param   {String[]}     languages    List of locales
+   * @param   {HTMLElement}  htmlElement  Container to add the buttons representing available languages to
+   *
+   * @return  {void}
+   */
   function renderFlags(languages, htmlElement) {
     // Render flags on top of results-list
     languages.sort(function (a, b) {
@@ -4229,6 +4274,8 @@ module.exports = function (_ref) {
       if (selectedLanguages.indexOf(lang) !== -1) {
         langButton.children[0].classList.add("active");
       }
+
+      // Event-handler to filter results for selected languages
       langButton.children[0].addEventListener("click", function () {
         var position = selectedLanguages.indexOf(lang);
         if (position === -1) {
@@ -4243,8 +4290,18 @@ module.exports = function (_ref) {
     });
   }
 
-  function renderResults(items, rangeStart, rangeEnd, htmlList) {
-    items.filter(function (item, index) {
+  /**
+   * Render paginated table/list UI of search-results
+   *
+   * @param   {Object[]}     projects    List of search-result data categorized by translation project
+   * @param   {[type]}       rangeStart  Index position to start reflecting the first project to be rendered on the page
+   * @param   {[type]}       rangeEnd    Index position to end reflecting the last project to be rendered on the page
+   * @param   {HTMLElement}  htmlList    Parent container to insert the results into
+   *
+   * @return  {void}
+   */
+  function renderResults(projects, rangeStart, rangeEnd, htmlList) {
+    projects.filter(function (item, index) {
       return index >= rangeStart && index < rangeEnd;
     }).forEach(function (item) {
       var htmlProject = document.createElement("div");
@@ -4259,12 +4316,15 @@ module.exports = function (_ref) {
         var htmlKey = document.createElement("div");
         htmlKey.innerHTML = KeyItem;
         var lang = flags.getLang(result.lang);
+
         whisker.add(htmlKey, {
           key: result.key,
           url: result.url,
-          lang: lang,
-          text: result.text
+          lang: lang
         });
+        var txtNode = htmlKey.children[0].querySelector(".text");
+        var regex = new RegExp(results.search_term, "ig");
+        txtNode.innerHTML = result.text.replaceAll(regex, '<span class="highlight">$&</span>');
         keyList.appendChild(htmlKey.children[0]);
       });
 
@@ -4274,6 +4334,14 @@ module.exports = function (_ref) {
     });
   }
 
+  /**
+   * Render the pagination UI
+   *
+   * @param   {number}       numPages     Total number of pages containing search-result data
+   * @param   {HTMLElement}  htmlElement  Container the pagination buttons are inserted into
+   *
+   * @return  {void}
+   */
   function renderPagination(numPages, htmlElement) {
     var _loop = function _loop(pageNumber) {
       var wrapper = document.createElement("div");
@@ -4302,6 +4370,13 @@ module.exports = function (_ref) {
     }
   }
 
+  /**
+   * Render the whole page/view
+   *
+   * @param   {Object}  res  Search-result data returned by trans-search-rs
+   *
+   * @return  {void}
+   */
   function renderPage(res) {
     var projectEntries = res.data;
     var searchTerm = res.search_term;

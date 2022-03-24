@@ -1759,6 +1759,10 @@ body.login form button {
 .searchResults section .key-item .text {
   width: 65%;
 }
+.searchResults section .key-item .text .highlight {
+  color: #333;
+  background: lightskyblue;
+}
 .searchResults section .errorMessage {
   color: #f64545;
   text-shadow: 0 0 0 #fff;
