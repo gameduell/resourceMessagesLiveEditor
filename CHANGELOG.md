@@ -130,3 +130,6 @@
 
 ## 1.3.2
 - added highlighting the given search-term within the UI/modal
+
+## 1.3.3
+- updated dependencies to reduce vulnerabilities
