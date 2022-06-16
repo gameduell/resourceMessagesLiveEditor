@@ -157,7 +157,7 @@ header.header {
   top: 0;
 }
 header.header .beforeText {
-  margin: .5em 1em 0 1em;
+  margin: 0.5em 1em 0 1em;
   position: relative;
   display: block;
   float: left;
@@ -168,7 +168,7 @@ header.header .projectName {
   color: darkorange;
 }
 header.header .projectName:before {
-  margin-right: .3em;
+  margin-right: 0.3em;
 }
 footer.footer {
   line-height: 3em;
@@ -260,7 +260,7 @@ footer.footer .version-print {
 }
 .projectMainNavigation--header > span {
   font-weight: bold;
-  padding: 0 0 0 .7em;
+  padding: 0 0 0 0.7em;
   display: block;
   font-size: 1.5em;
 }
@@ -304,7 +304,7 @@ footer.footer .version-print {
   text-decoration: none;
   box-sizing: border-box;
   height: 100%;
-  padding: .5em 0 .5em .5em;
+  padding: 0.5em 0 0.5em 0.5em;
   top: 0;
   left: 0;
 }
@@ -317,7 +317,7 @@ footer.footer .version-print {
   cursor: pointer;
   text-decoration: none;
   font-size: 1.5em;
-  padding: .5em 0 .5em .5em;
+  padding: 0.5em 0 0.5em 0.5em;
   border-top: 1px solid black;
   box-shadow: 0px 1px 2px 0px rgba(250, 250, 250, 0.2) inset;
   position: relative;
@@ -393,7 +393,7 @@ footer.footer .version-print {
   position: fixed;
   top: 3em;
   right: 0;
-  height: calc(94%);
+  height: calc(100% - 6em);
   width: 14em;
   margin-right: 0;
   transition: margin 300ms;
@@ -465,7 +465,7 @@ footer.footer .version-print {
 }
 .menuRight .anchorMenu > ul > li {
   border-right: 3px solid transparent;
-  padding-top: .3em;
+  padding-top: 0.3em;
 }
 .menuRight .anchorMenu:before,
 .menuRight .anchorMenu:after {
@@ -618,7 +618,7 @@ footer.footer .version-print {
   resize: both;
   overflow: hidden;
   width: 100px;
-  padding: .5em;
+  padding: 0.5em;
 }
 .translationView .imageUpload-imageBox-content::before {
   display: block;
@@ -954,7 +954,7 @@ footer.footer .version-print {
   height: 1.2em;
   width: auto;
   right: 0;
-  top: .1em;
+  top: 0.1em;
 }
 .inputEditManager-button {
   transition: margin 200ms;
@@ -1086,7 +1086,7 @@ footer.footer .version-print {
   -o-text-shadow: 0 1px 1px #464d52;
   -moz-text-shadow: 0 1px 1px #464d52;
   -webkit-text-shadow: 0 1px 1px #464d52;
-  text-shadow: 0 1px 1px #ddd,0 1px 1px #ddd,0 1px 1px #ddd;
+  text-shadow: 0 1px 1px #ddd, 0 1px 1px #ddd, 0 1px 1px #ddd;
   /* background: #a2a8ad; */
   background: linear-gradient(#d6d5d5, #C5CDD4);
   box-shadow: 0px -2px 0px 0px #989A9C inset;
@@ -1098,7 +1098,7 @@ footer.footer .version-print {
   background: #b1b8be;
 }
 .button:before {
-  padding-right: .3em;
+  padding-right: 0.3em;
 }
 .inputField {
   font-size: 1em;
@@ -1184,14 +1184,14 @@ footer.footer .version-print {
   vertical-align: baseline;
   color: #fff;
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  padding: .5em;
+  padding: 0.5em;
   text-transform: none;
   text-shadow: none;
   line-height: 1em;
   font-style: normal;
   text-align: center;
   text-decoration: none;
-  border-radius: .28571429rem;
+  border-radius: 0.28571429rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1285,7 +1285,7 @@ footer.footer .version-print {
   padding: 1em;
 }
 .projectOverview table {
-  padding-top: .5em;
+  padding-top: 0.5em;
   width: 100%;
 }
 .projectOverview table * {
@@ -1334,7 +1334,7 @@ footer.footer .version-print {
   box-shadow: 0 2px 2px 0 #777 inset;
   background: #999;
   color: #e0e0e0;
-  text-shadow: 0 1px 1px #666,0 1px 1px #ddd,0 1px 1px #333;
+  text-shadow: 0 1px 1px #666, 0 1px 1px #ddd, 0 1px 1px #333;
 }
 .projectOverview-buttons {
   text-align: center;
@@ -1358,7 +1358,7 @@ footer.footer .version-print {
   color: darkgrey;
 }
 .breadcrumb li:before {
-  padding-right: .3em;
+  padding-right: 0.3em;
 }
 .breadcrumb li:after {
   float: right;
@@ -1457,7 +1457,7 @@ body.login form label {
 body.login form button {
   width: 100%;
   min-height: 2em;
-  padding: .7em 0;
+  padding: 0.7em 0;
 }
 .upload * {
   box-sizing: border-box;
@@ -1608,15 +1608,15 @@ body.login form button {
   vertical-align: baseline;
   color: #fff;
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  margin: 0 .25em 0 0;
-  padding: .78571429em 1.5em;
+  margin: 0 0.25em 0 0;
+  padding: 0.78571429em 1.5em;
   text-transform: none;
   text-shadow: none;
   line-height: 1em;
   font-style: normal;
   text-align: center;
   text-decoration: none;
-  border-radius: .28571429rem;
+  border-radius: 0.28571429rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1634,7 +1634,7 @@ body.login form button {
   margin: 2em 0;
 }
 .connectionLost section .button-section button + button {
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 .connectionLost section button.reconnect:hover {
   box-shadow: 0 0 0 2px #22be34 inset;
