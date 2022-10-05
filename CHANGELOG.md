@@ -133,3 +133,6 @@
 
 ## 1.3.3
 - updated dependencies to reduce vulnerabilities
+
+## 1.3.4
+- sorting project folders and names alphabetically

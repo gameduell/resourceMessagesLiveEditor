@@ -3948,7 +3948,30 @@ var projectOverview = function () {
             console.log('got projects', projectNames);
             console.log('got directories', directoryNames);
 
-            projectNames.forEach(function (projectName) {
+            directoryNames.sort(function (a, b) {
+                return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
+            }).forEach(function (directoryName) {
+                projectsAndDirectories.push({
+                    name: directoryName,
+                    dir: true,
+                    openProjectListItem: function openProjectListItem() {
+                        console.log('directory selected:', directoryName);
+                        if (_onDirectorySelected) {
+                            _onDirectorySelected(directoryName);
+                        }
+                    },
+                    deleteProjectListItem: function deleteProjectListItem() {
+                        var deletionConfirmed = window.confirm('Really delete folder ' + directoryName + '?');
+                        if (_onDeleteFolderPressed && deletionConfirmed) {
+                            _onDeleteFolderPressed(directoryName);
+                        }
+                    }
+                });
+            });
+
+            projectNames.sort(function (a, b) {
+                return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
+            }).forEach(function (projectName) {
                 projectsAndDirectories.push({
                     name: projectName,
                     dir: false,
@@ -3966,24 +3989,6 @@ var projectOverview = function () {
                     },
                     moveProject: function moveProject() {
                         onMovedProjectPressed(projectName);
-                    }
-                });
-            });
-            directoryNames.forEach(function (directoryName) {
-                projectsAndDirectories.push({
-                    name: directoryName,
-                    dir: true,
-                    openProjectListItem: function openProjectListItem() {
-                        console.log('directory selected:', directoryName);
-                        if (_onDirectorySelected) {
-                            _onDirectorySelected(directoryName);
-                        }
-                    },
-                    deleteProjectListItem: function deleteProjectListItem() {
-                        var deletionConfirmed = window.confirm('Really delete folder ' + directoryName + '?');
-                        if (_onDeleteFolderPressed && deletionConfirmed) {
-                            _onDeleteFolderPressed(directoryName);
-                        }
                     }
                 });
             });
