@@ -20942,438 +20942,425 @@ GlobSync.prototype._makeAbs = function (f) {
 
 }).call(this)}).call(this,require('_process'))
 },{"./common.js":105,"./glob.js":106,"_process":117,"assert":61,"fs.realpath":89,"minimatch":111,"path":114,"path-is-absolute":115,"util":206}],108:[function(require,module,exports){
+'use strict';
+
 exports.parse = require('./lib/parse');
 exports.stringify = require('./lib/stringify');
 
 },{"./lib/parse":109,"./lib/stringify":110}],109:[function(require,module,exports){
-var at, // The index of the current character
-    ch, // The current character
-    escapee = {
-        '"':  '"',
-        '\\': '\\',
-        '/':  '/',
-        b:    '\b',
-        f:    '\f',
-        n:    '\n',
-        r:    '\r',
-        t:    '\t'
-    },
-    text,
+'use strict';
 
-    error = function (m) {
-        // Call error when something is wrong.
-        throw {
-            name:    'SyntaxError',
-            message: m,
-            at:      at,
-            text:    text
-        };
-    },
-    
-    next = function (c) {
-        // If a c parameter is provided, verify that it matches the current character.
-        if (c && c !== ch) {
-            error("Expected '" + c + "' instead of '" + ch + "'");
-        }
-        
-        // Get the next character. When there are no more characters,
-        // return the empty string.
-        
-        ch = text.charAt(at);
-        at += 1;
-        return ch;
-    },
-    
-    number = function () {
-        // Parse a number value.
-        var number,
-            string = '';
-        
-        if (ch === '-') {
-            string = '-';
-            next('-');
-        }
-        while (ch >= '0' && ch <= '9') {
-            string += ch;
-            next();
-        }
-        if (ch === '.') {
-            string += '.';
-            while (next() && ch >= '0' && ch <= '9') {
-                string += ch;
-            }
-        }
-        if (ch === 'e' || ch === 'E') {
-            string += ch;
-            next();
-            if (ch === '-' || ch === '+') {
-                string += ch;
-                next();
-            }
-            while (ch >= '0' && ch <= '9') {
-                string += ch;
-                next();
-            }
-        }
-        number = +string;
-        if (!isFinite(number)) {
-            error("Bad number");
-        } else {
-            return number;
-        }
-    },
-    
-    string = function () {
-        // Parse a string value.
-        var hex,
-            i,
-            string = '',
-            uffff;
-        
-        // When parsing for string values, we must look for " and \ characters.
-        if (ch === '"') {
-            while (next()) {
-                if (ch === '"') {
-                    next();
-                    return string;
-                } else if (ch === '\\') {
-                    next();
-                    if (ch === 'u') {
-                        uffff = 0;
-                        for (i = 0; i < 4; i += 1) {
-                            hex = parseInt(next(), 16);
-                            if (!isFinite(hex)) {
-                                break;
-                            }
-                            uffff = uffff * 16 + hex;
-                        }
-                        string += String.fromCharCode(uffff);
-                    } else if (typeof escapee[ch] === 'string') {
-                        string += escapee[ch];
-                    } else {
-                        break;
-                    }
-                } else {
-                    string += ch;
-                }
-            }
-        }
-        error("Bad string");
-    },
+var at; // The index of the current character
+var ch; // The current character
+var escapee = {
+	'"': '"',
+	'\\': '\\',
+	'/': '/',
+	b: '\b',
+	f: '\f',
+	n: '\n',
+	r: '\r',
+	t: '\t'
+};
+var text;
 
-    white = function () {
+// Call error when something is wrong.
+function error(m) {
+	throw {
+		name: 'SyntaxError',
+		message: m,
+		at: at,
+		text: text
+	};
+}
+
+function next(c) {
+	// If a c parameter is provided, verify that it matches the current character.
+	if (c && c !== ch) {
+		error("Expected '" + c + "' instead of '" + ch + "'");
+	}
+
+	// Get the next character. When there are no more characters, return the empty string.
+
+	ch = text.charAt(at);
+	at += 1;
+	return ch;
+}
+
+function number() {
+	// Parse a number value.
+	var num;
+	var str = '';
+
+	if (ch === '-') {
+		str = '-';
+		next('-');
+	}
+	while (ch >= '0' && ch <= '9') {
+		str += ch;
+		next();
+	}
+	if (ch === '.') {
+		str += '.';
+		while (next() && ch >= '0' && ch <= '9') {
+			str += ch;
+		}
+	}
+	if (ch === 'e' || ch === 'E') {
+		str += ch;
+		next();
+		if (ch === '-' || ch === '+') {
+			str += ch;
+			next();
+		}
+		while (ch >= '0' && ch <= '9') {
+			str += ch;
+			next();
+		}
+	}
+	num = Number(str);
+	if (!isFinite(num)) {
+		error('Bad number');
+	}
+	return num;
+}
+
+function string() {
+	// Parse a string value.
+	var hex;
+	var i;
+	var str = '';
+	var uffff;
+
+	// When parsing for string values, we must look for " and \ characters.
+	if (ch === '"') {
+		while (next()) {
+			if (ch === '"') {
+				next();
+				return str;
+			} else if (ch === '\\') {
+				next();
+				if (ch === 'u') {
+					uffff = 0;
+					for (i = 0; i < 4; i += 1) {
+						hex = parseInt(next(), 16);
+						if (!isFinite(hex)) {
+							break;
+						}
+						uffff = (uffff * 16) + hex;
+					}
+					str += String.fromCharCode(uffff);
+				} else if (typeof escapee[ch] === 'string') {
+					str += escapee[ch];
+				} else {
+					break;
+				}
+			} else {
+				str += ch;
+			}
+		}
+	}
+	error('Bad string');
+}
 
 // Skip whitespace.
-
-        while (ch && ch <= ' ') {
-            next();
-        }
-    },
-
-    word = function () {
+function white() {
+	while (ch && ch <= ' ') {
+		next();
+	}
+}
 
 // true, false, or null.
-
-        switch (ch) {
-        case 't':
-            next('t');
-            next('r');
-            next('u');
-            next('e');
-            return true;
-        case 'f':
-            next('f');
-            next('a');
-            next('l');
-            next('s');
-            next('e');
-            return false;
-        case 'n':
-            next('n');
-            next('u');
-            next('l');
-            next('l');
-            return null;
-        }
-        error("Unexpected '" + ch + "'");
-    },
-
-    value,  // Place holder for the value function.
-
-    array = function () {
+function word() {
+	switch (ch) {
+		case 't':
+			next('t');
+			next('r');
+			next('u');
+			next('e');
+			return true;
+		case 'f':
+			next('f');
+			next('a');
+			next('l');
+			next('s');
+			next('e');
+			return false;
+		case 'n':
+			next('n');
+			next('u');
+			next('l');
+			next('l');
+			return null;
+		default:
+			error("Unexpected '" + ch + "'");
+	}
+}
 
 // Parse an array value.
+function array() {
+	var arr = [];
 
-        var array = [];
-
-        if (ch === '[') {
-            next('[');
-            white();
-            if (ch === ']') {
-                next(']');
-                return array;   // empty array
-            }
-            while (ch) {
-                array.push(value());
-                white();
-                if (ch === ']') {
-                    next(']');
-                    return array;
-                }
-                next(',');
-                white();
-            }
-        }
-        error("Bad array");
-    },
-
-    object = function () {
+	if (ch === '[') {
+		next('[');
+		white();
+		if (ch === ']') {
+			next(']');
+			return arr; // empty array
+		}
+		while (ch) {
+			arr.push(value()); // eslint-disable-line no-use-before-define
+			white();
+			if (ch === ']') {
+				next(']');
+				return arr;
+			}
+			next(',');
+			white();
+		}
+	}
+	error('Bad array');
+}
 
 // Parse an object value.
+function object() {
+	var key;
+	var obj = {};
 
-        var key,
-            object = {};
+	if (ch === '{') {
+		next('{');
+		white();
+		if (ch === '}') {
+			next('}');
+			return obj; // empty object
+		}
+		while (ch) {
+			key = string();
+			white();
+			next(':');
+			if (Object.prototype.hasOwnProperty.call(obj, key)) {
+				error('Duplicate key "' + key + '"');
+			}
+			obj[key] = value(); // eslint-disable-line no-use-before-define
+			white();
+			if (ch === '}') {
+				next('}');
+				return obj;
+			}
+			next(',');
+			white();
+		}
+	}
+	error('Bad object');
+}
 
-        if (ch === '{') {
-            next('{');
-            white();
-            if (ch === '}') {
-                next('}');
-                return object;   // empty object
-            }
-            while (ch) {
-                key = string();
-                white();
-                next(':');
-                if (Object.hasOwnProperty.call(object, key)) {
-                    error('Duplicate key "' + key + '"');
-                }
-                object[key] = value();
-                white();
-                if (ch === '}') {
-                    next('}');
-                    return object;
-                }
-                next(',');
-                white();
-            }
-        }
-        error("Bad object");
-    };
+// Parse a JSON value. It could be an object, an array, a string, a number, or a word.
+function value() {
+	white();
+	switch (ch) {
+		case '{':
+			return object();
+		case '[':
+			return array();
+		case '"':
+			return string();
+		case '-':
+			return number();
+		default:
+			return ch >= '0' && ch <= '9' ? number() : word();
+	}
+}
 
-value = function () {
-
-// Parse a JSON value. It could be an object, an array, a string, a number,
-// or a word.
-
-    white();
-    switch (ch) {
-    case '{':
-        return object();
-    case '[':
-        return array();
-    case '"':
-        return string();
-    case '-':
-        return number();
-    default:
-        return ch >= '0' && ch <= '9' ? number() : word();
-    }
-};
-
-// Return the json_parse function. It will have access to all of the above
-// functions and variables.
-
+// Return the json_parse function. It will have access to all of the above functions and variables.
 module.exports = function (source, reviver) {
-    var result;
-    
-    text = source;
-    at = 0;
-    ch = ' ';
-    result = value();
-    white();
-    if (ch) {
-        error("Syntax error");
-    }
+	var result;
 
-    // If there is a reviver function, we recursively walk the new structure,
-    // passing each name/value pair to the reviver function for possible
-    // transformation, starting with a temporary root object that holds the result
-    // in an empty key. If there is not a reviver function, we simply return the
-    // result.
+	text = source;
+	at = 0;
+	ch = ' ';
+	result = value();
+	white();
+	if (ch) {
+		error('Syntax error');
+	}
 
-    return typeof reviver === 'function' ? (function walk(holder, key) {
-        var k, v, value = holder[key];
-        if (value && typeof value === 'object') {
-            for (k in value) {
-                if (Object.prototype.hasOwnProperty.call(value, k)) {
-                    v = walk(value, k);
-                    if (v !== undefined) {
-                        value[k] = v;
-                    } else {
-                        delete value[k];
-                    }
-                }
-            }
-        }
-        return reviver.call(holder, key, value);
-    }({'': result}, '')) : result;
+	// If there is a reviver function, we recursively walk the new structure,
+	// passing each name/value pair to the reviver function for possible
+	// transformation, starting with a temporary root object that holds the result
+	// in an empty key. If there is not a reviver function, we simply return the
+	// result.
+
+	return typeof reviver === 'function' ? (function walk(holder, key) {
+		var k;
+		var v;
+		var val = holder[key];
+		if (val && typeof val === 'object') {
+			for (k in value) {
+				if (Object.prototype.hasOwnProperty.call(val, k)) {
+					v = walk(val, k);
+					if (typeof v === 'undefined') {
+						delete val[k];
+					} else {
+						val[k] = v;
+					}
+				}
+			}
+		}
+		return reviver.call(holder, key, val);
+	}({ '': result }, '')) : result;
 };
 
 },{}],110:[function(require,module,exports){
-var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-    escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-    gap,
-    indent,
-    meta = {    // table of character substitutions
-        '\b': '\\b',
-        '\t': '\\t',
-        '\n': '\\n',
-        '\f': '\\f',
-        '\r': '\\r',
-        '"' : '\\"',
-        '\\': '\\\\'
-    },
-    rep;
+'use strict';
+
+var escapable = /[\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
+var gap;
+var indent;
+var meta = { // table of character substitutions
+	'\b': '\\b',
+	'\t': '\\t',
+	'\n': '\\n',
+	'\f': '\\f',
+	'\r': '\\r',
+	'"': '\\"',
+	'\\': '\\\\'
+};
+var rep;
 
 function quote(string) {
-    // If the string contains no control characters, no quote characters, and no
-    // backslash characters, then we can safely slap some quotes around it.
-    // Otherwise we must also replace the offending characters with safe escape
-    // sequences.
-    
-    escapable.lastIndex = 0;
-    return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
-        var c = meta[a];
-        return typeof c === 'string' ? c :
-            '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-    }) + '"' : '"' + string + '"';
+	// If the string contains no control characters, no quote characters, and no
+	// backslash characters, then we can safely slap some quotes around it.
+	// Otherwise we must also replace the offending characters with safe escape sequences.
+
+	escapable.lastIndex = 0;
+	return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
+		var c = meta[a];
+		return typeof c === 'string' ? c
+			: '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+	}) + '"' : '"' + string + '"';
 }
 
 function str(key, holder) {
-    // Produce a string from holder[key].
-    var i,          // The loop counter.
-        k,          // The member key.
-        v,          // The member value.
-        length,
-        mind = gap,
-        partial,
-        value = holder[key];
-    
-    // If the value has a toJSON method, call it to obtain a replacement value.
-    if (value && typeof value === 'object' &&
-            typeof value.toJSON === 'function') {
-        value = value.toJSON(key);
-    }
-    
-    // If we were called with a replacer function, then call the replacer to
-    // obtain a replacement value.
-    if (typeof rep === 'function') {
-        value = rep.call(holder, key, value);
-    }
-    
-    // What happens next depends on the value's type.
-    switch (typeof value) {
-        case 'string':
-            return quote(value);
-        
-        case 'number':
-            // JSON numbers must be finite. Encode non-finite numbers as null.
-            return isFinite(value) ? String(value) : 'null';
-        
-        case 'boolean':
-        case 'null':
-            // If the value is a boolean or null, convert it to a string. Note:
-            // typeof null does not produce 'null'. The case is included here in
-            // the remote chance that this gets fixed someday.
-            return String(value);
-            
-        case 'object':
-            if (!value) return 'null';
-            gap += indent;
-            partial = [];
-            
-            // Array.isArray
-            if (Object.prototype.toString.apply(value) === '[object Array]') {
-                length = value.length;
-                for (i = 0; i < length; i += 1) {
-                    partial[i] = str(i, value) || 'null';
-                }
-                
-                // Join all of the elements together, separated with commas, and
-                // wrap them in brackets.
-                v = partial.length === 0 ? '[]' : gap ?
-                    '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']' :
-                    '[' + partial.join(',') + ']';
-                gap = mind;
-                return v;
-            }
-            
-            // If the replacer is an array, use it to select the members to be
-            // stringified.
-            if (rep && typeof rep === 'object') {
-                length = rep.length;
-                for (i = 0; i < length; i += 1) {
-                    k = rep[i];
-                    if (typeof k === 'string') {
-                        v = str(k, value);
-                        if (v) {
-                            partial.push(quote(k) + (gap ? ': ' : ':') + v);
-                        }
-                    }
-                }
-            }
-            else {
-                // Otherwise, iterate through all of the keys in the object.
-                for (k in value) {
-                    if (Object.prototype.hasOwnProperty.call(value, k)) {
-                        v = str(k, value);
-                        if (v) {
-                            partial.push(quote(k) + (gap ? ': ' : ':') + v);
-                        }
-                    }
-                }
-            }
-            
-        // Join all of the member texts together, separated with commas,
-        // and wrap them in braces.
+	// Produce a string from holder[key].
+	var i; // The loop counter.
+	var k; // The member key.
+	var v; // The member value.
+	var length;
+	var mind = gap;
+	var partial;
+	var value = holder[key];
 
-        v = partial.length === 0 ? '{}' : gap ?
-            '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}' :
-            '{' + partial.join(',') + '}';
-        gap = mind;
-        return v;
-    }
+	// If the value has a toJSON method, call it to obtain a replacement value.
+	if (value && typeof value === 'object' && typeof value.toJSON === 'function') {
+		value = value.toJSON(key);
+	}
+
+	// If we were called with a replacer function, then call the replacer to obtain a replacement value.
+	if (typeof rep === 'function') {
+		value = rep.call(holder, key, value);
+	}
+
+	// What happens next depends on the value's type.
+	switch (typeof value) {
+		case 'string':
+			return quote(value);
+
+		case 'number':
+			// JSON numbers must be finite. Encode non-finite numbers as null.
+			return isFinite(value) ? String(value) : 'null';
+
+		case 'boolean':
+		case 'null':
+			// If the value is a boolean or null, convert it to a string. Note:
+			// typeof null does not produce 'null'. The case is included here in
+			// the remote chance that this gets fixed someday.
+			return String(value);
+
+		case 'object':
+			if (!value) {
+				return 'null';
+			}
+			gap += indent;
+			partial = [];
+
+			// Array.isArray
+			if (Object.prototype.toString.apply(value) === '[object Array]') {
+				length = value.length;
+				for (i = 0; i < length; i += 1) {
+					partial[i] = str(i, value) || 'null';
+				}
+
+				// Join all of the elements together, separated with commas, and wrap them in brackets.
+				v = partial.length === 0 ? '[]' : gap
+					? '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']'
+					: '[' + partial.join(',') + ']';
+				gap = mind;
+				return v;
+			}
+
+			// If the replacer is an array, use it to select the members to be stringified.
+			if (rep && typeof rep === 'object') {
+				length = rep.length;
+				for (i = 0; i < length; i += 1) {
+					k = rep[i];
+					if (typeof k === 'string') {
+						v = str(k, value);
+						if (v) {
+							partial.push(quote(k) + (gap ? ': ' : ':') + v);
+						}
+					}
+				}
+			} else {
+				// Otherwise, iterate through all of the keys in the object.
+				for (k in value) {
+					if (Object.prototype.hasOwnProperty.call(value, k)) {
+						v = str(k, value);
+						if (v) {
+							partial.push(quote(k) + (gap ? ': ' : ':') + v);
+						}
+					}
+				}
+			}
+
+			// Join all of the member texts together, separated with commas, and wrap them in braces.
+
+			v = partial.length === 0 ? '{}' : gap
+				? '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}'
+				: '{' + partial.join(',') + '}';
+			gap = mind;
+			return v;
+		default:
+	}
 }
 
 module.exports = function (value, replacer, space) {
-    var i;
-    gap = '';
-    indent = '';
-    
-    // If the space parameter is a number, make an indent string containing that
-    // many spaces.
-    if (typeof space === 'number') {
-        for (i = 0; i < space; i += 1) {
-            indent += ' ';
-        }
-    }
-    // If the space parameter is a string, it will be used as the indent string.
-    else if (typeof space === 'string') {
-        indent = space;
-    }
+	var i;
+	gap = '';
+	indent = '';
 
-    // If there is a replacer, it must be a function or an array.
-    // Otherwise, throw an error.
-    rep = replacer;
-    if (replacer && typeof replacer !== 'function'
-    && (typeof replacer !== 'object' || typeof replacer.length !== 'number')) {
-        throw new Error('JSON.stringify');
-    }
-    
-    // Make a fake root object containing our value under the key of ''.
-    // Return the result of stringifying the value.
-    return str('', {'': value});
+	// If the space parameter is a number, make an indent string containing that many spaces.
+	if (typeof space === 'number') {
+		for (i = 0; i < space; i += 1) {
+			indent += ' ';
+		}
+	} else if (typeof space === 'string') {
+		// If the space parameter is a string, it will be used as the indent string.
+		indent = space;
+	}
+
+	// If there is a replacer, it must be a function or an array. Otherwise, throw an error.
+	rep = replacer;
+	if (
+		replacer
+		&& typeof replacer !== 'function'
+		&& (typeof replacer !== 'object' || typeof replacer.length !== 'number')
+	) {
+		throw new Error('JSON.stringify');
+	}
+
+	// Make a fake root object containing our value under the key of ''.
+	// Return the result of stringifying the value.
+	return str('', { '': value });
 };
 
 },{}],111:[function(require,module,exports){
@@ -24102,7 +24089,7 @@ var Stream = require('./internal/streams/stream');
 /*<replacement>*/
 
 var Buffer = require('safe-buffer').Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
+var OurUint8Array = (typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : {}).Uint8Array || function () {};
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
 }
@@ -24672,8 +24659,8 @@ Readable.prototype.pipe = function (dest, pipeOpts) {
       // also returned false.
       // => Check whether `dest` is still a piping destination.
       if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
-        debug('false write response, pause', src._readableState.awaitDrain);
-        src._readableState.awaitDrain++;
+        debug('false write response, pause', state.awaitDrain);
+        state.awaitDrain++;
         increasedAwaitDrain = true;
       }
       src.pause();
@@ -24767,7 +24754,7 @@ Readable.prototype.unpipe = function (dest) {
     state.flowing = false;
 
     for (var i = 0; i < len; i++) {
-      dests[i].emit('unpipe', this, unpipeInfo);
+      dests[i].emit('unpipe', this, { hasUnpiped: false });
     }return this;
   }
 
@@ -25067,7 +25054,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_stream_duplex":124,"./internal/streams/BufferList":129,"./internal/streams/destroy":130,"./internal/streams/stream":131,"_process":117,"core-util-is":78,"events":87,"inherits":93,"isarray":132,"process-nextick-args":116,"safe-buffer":139,"string_decoder/":133,"util":68}],127:[function(require,module,exports){
+},{"./_stream_duplex":124,"./internal/streams/BufferList":129,"./internal/streams/destroy":130,"./internal/streams/stream":131,"_process":117,"core-util-is":78,"events":87,"inherits":93,"isarray":132,"process-nextick-args":116,"safe-buffer":133,"string_decoder/":134,"util":68}],127:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -25367,7 +25354,7 @@ var Stream = require('./internal/streams/stream');
 /*<replacement>*/
 
 var Buffer = require('safe-buffer').Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
+var OurUint8Array = (typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : {}).Uint8Array || function () {};
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
 }
@@ -25635,7 +25622,7 @@ Writable.prototype.uncork = function () {
   if (state.corked) {
     state.corked--;
 
-    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
+    if (!state.writing && !state.corked && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
   }
 };
 
@@ -25877,7 +25864,7 @@ Writable.prototype.end = function (chunk, encoding, cb) {
   }
 
   // ignore unnecessary end() calls.
-  if (!state.ending && !state.finished) endWritable(this, state, cb);
+  if (!state.ending) endWritable(this, state, cb);
 };
 
 function needFinish(state) {
@@ -25938,11 +25925,9 @@ function onCorkedFinish(corkReq, state, err) {
     cb(err);
     entry = entry.next;
   }
-  if (state.corkedRequestsFree) {
-    state.corkedRequestsFree.next = corkReq;
-  } else {
-    state.corkedRequestsFree = corkReq;
-  }
+
+  // reuse the free corkReq.
+  state.corkedRequestsFree.next = corkReq;
 }
 
 Object.defineProperty(Writable.prototype, 'destroyed', {
@@ -25972,7 +25957,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"./_stream_duplex":124,"./internal/streams/destroy":130,"./internal/streams/stream":131,"_process":117,"core-util-is":78,"inherits":93,"process-nextick-args":116,"safe-buffer":139,"timers":198,"util-deprecate":203}],129:[function(require,module,exports){
+},{"./_stream_duplex":124,"./internal/streams/destroy":130,"./internal/streams/stream":131,"_process":117,"core-util-is":78,"inherits":93,"process-nextick-args":116,"safe-buffer":133,"timers":198,"util-deprecate":203}],129:[function(require,module,exports){
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26031,7 +26016,6 @@ module.exports = function () {
 
   BufferList.prototype.concat = function concat(n) {
     if (this.length === 0) return Buffer.alloc(0);
-    if (this.length === 1) return this.head.data;
     var ret = Buffer.allocUnsafe(n >>> 0);
     var p = this.head;
     var i = 0;
@@ -26052,7 +26036,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":139,"util":68}],130:[function(require,module,exports){
+},{"safe-buffer":133,"util":68}],130:[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -26070,9 +26054,15 @@ function destroy(err, cb) {
   if (readableDestroyed || writableDestroyed) {
     if (cb) {
       cb(err);
-    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      pna.nextTick(emitErrorNT, this, err);
+    } else if (err) {
+      if (!this._writableState) {
+        pna.nextTick(emitErrorNT, this, err);
+      } else if (!this._writableState.errorEmitted) {
+        this._writableState.errorEmitted = true;
+        pna.nextTick(emitErrorNT, this, err);
+      }
     }
+
     return this;
   }
 
@@ -26090,9 +26080,11 @@ function destroy(err, cb) {
 
   this._destroy(err || null, function (err) {
     if (!cb && err) {
-      pna.nextTick(emitErrorNT, _this, err);
-      if (_this._writableState) {
+      if (!_this._writableState) {
+        pna.nextTick(emitErrorNT, _this, err);
+      } else if (!_this._writableState.errorEmitted) {
         _this._writableState.errorEmitted = true;
+        pna.nextTick(emitErrorNT, _this, err);
       }
     } else if (cb) {
       cb(err);
@@ -26114,6 +26106,8 @@ function undestroy() {
     this._writableState.destroyed = false;
     this._writableState.ended = false;
     this._writableState.ending = false;
+    this._writableState.finalCalled = false;
+    this._writableState.prefinished = false;
     this._writableState.finished = false;
     this._writableState.errorEmitted = false;
   }
@@ -26138,6 +26132,70 @@ module.exports = Array.isArray || function (arr) {
 };
 
 },{}],133:[function(require,module,exports){
+/* eslint-disable node/no-deprecated-api */
+var buffer = require('buffer')
+var Buffer = buffer.Buffer
+
+// alternative to using Object.keys for old browsers
+function copyProps (src, dst) {
+  for (var key in src) {
+    dst[key] = src[key]
+  }
+}
+if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
+  module.exports = buffer
+} else {
+  // Copy properties from require('buffer')
+  copyProps(buffer, exports)
+  exports.Buffer = SafeBuffer
+}
+
+function SafeBuffer (arg, encodingOrOffset, length) {
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+// Copy static methods from Buffer
+copyProps(Buffer, SafeBuffer)
+
+SafeBuffer.from = function (arg, encodingOrOffset, length) {
+  if (typeof arg === 'number') {
+    throw new TypeError('Argument must not be a number')
+  }
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.alloc = function (size, fill, encoding) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  var buf = Buffer(size)
+  if (fill !== undefined) {
+    if (typeof encoding === 'string') {
+      buf.fill(fill, encoding)
+    } else {
+      buf.fill(fill)
+    }
+  } else {
+    buf.fill(0)
+  }
+  return buf
+}
+
+SafeBuffer.allocUnsafe = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return Buffer(size)
+}
+
+SafeBuffer.allocUnsafeSlow = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return buffer.SlowBuffer(size)
+}
+
+},{"buffer":70}],134:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -26434,10 +26492,10 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":139}],134:[function(require,module,exports){
+},{"safe-buffer":133}],135:[function(require,module,exports){
 module.exports = require('./readable').PassThrough
 
-},{"./readable":135}],135:[function(require,module,exports){
+},{"./readable":136}],136:[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -26446,13 +26504,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":124,"./lib/_stream_passthrough.js":125,"./lib/_stream_readable.js":126,"./lib/_stream_transform.js":127,"./lib/_stream_writable.js":128}],136:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":124,"./lib/_stream_passthrough.js":125,"./lib/_stream_readable.js":126,"./lib/_stream_transform.js":127,"./lib/_stream_writable.js":128}],137:[function(require,module,exports){
 module.exports = require('./readable').Transform
 
-},{"./readable":135}],137:[function(require,module,exports){
+},{"./readable":136}],138:[function(require,module,exports){
 module.exports = require('./lib/_stream_writable.js');
 
-},{"./lib/_stream_writable.js":128}],138:[function(require,module,exports){
+},{"./lib/_stream_writable.js":128}],139:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26492,71 +26550,7 @@ module.exports = function required(port, protocol) {
   return port !== 0;
 };
 
-},{}],139:[function(require,module,exports){
-/* eslint-disable node/no-deprecated-api */
-var buffer = require('buffer')
-var Buffer = buffer.Buffer
-
-// alternative to using Object.keys for old browsers
-function copyProps (src, dst) {
-  for (var key in src) {
-    dst[key] = src[key]
-  }
-}
-if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer
-} else {
-  // Copy properties from require('buffer')
-  copyProps(buffer, exports)
-  exports.Buffer = SafeBuffer
-}
-
-function SafeBuffer (arg, encodingOrOffset, length) {
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-// Copy static methods from Buffer
-copyProps(Buffer, SafeBuffer)
-
-SafeBuffer.from = function (arg, encodingOrOffset, length) {
-  if (typeof arg === 'number') {
-    throw new TypeError('Argument must not be a number')
-  }
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-SafeBuffer.alloc = function (size, fill, encoding) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  var buf = Buffer(size)
-  if (fill !== undefined) {
-    if (typeof encoding === 'string') {
-      buf.fill(fill, encoding)
-    } else {
-      buf.fill(fill)
-    }
-  } else {
-    buf.fill(0)
-  }
-  return buf
-}
-
-SafeBuffer.allocUnsafe = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return Buffer(size)
-}
-
-SafeBuffer.allocUnsafeSlow = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return buffer.SlowBuffer(size)
-}
-
-},{"buffer":70}],140:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 var Stream = require('stream');
 var sockjs = require('sockjs-client');
 var resolve = require('url').resolve;
@@ -31046,7 +31040,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":87,"inherits":93,"readable-stream/duplex.js":123,"readable-stream/passthrough.js":134,"readable-stream/readable.js":135,"readable-stream/transform.js":136,"readable-stream/writable.js":137}],198:[function(require,module,exports){
+},{"events":87,"inherits":93,"readable-stream/duplex.js":123,"readable-stream/passthrough.js":135,"readable-stream/readable.js":136,"readable-stream/transform.js":137,"readable-stream/writable.js":138}],198:[function(require,module,exports){
 (function (setImmediate,clearImmediate){(function (){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -31126,320 +31120,317 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this)}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 },{"process/browser.js":117,"timers":198}],199:[function(require,module,exports){
-var traverse = module.exports = function (obj) {
-    return new Traverse(obj);
+'use strict';
+
+// TODO: use call-bind, is-date, is-regex, is-string, is-boolean-object, is-number-object
+function toS(obj) { return Object.prototype.toString.call(obj); }
+function isDate(obj) { return toS(obj) === '[object Date]'; }
+function isRegExp(obj) { return toS(obj) === '[object RegExp]'; }
+function isError(obj) { return toS(obj) === '[object Error]'; }
+function isBoolean(obj) { return toS(obj) === '[object Boolean]'; }
+function isNumber(obj) { return toS(obj) === '[object Number]'; }
+function isString(obj) { return toS(obj) === '[object String]'; }
+
+// TODO: use isarray
+var isArray = Array.isArray || function isArray(xs) {
+	return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-function Traverse (obj) {
-    this.value = obj;
+// TODO: use for-each?
+function forEach(xs, fn) {
+	if (xs.forEach) { return xs.forEach(fn); }
+	for (var i = 0; i < xs.length; i++) {
+		fn(xs[i], i, xs);
+	}
+	return void undefined;
+}
+
+// TODO: use object-keys
+var objectKeys = Object.keys || function keys(obj) {
+	var res = [];
+	for (var key in obj) { res.push(key); } // eslint-disable-line no-restricted-syntax
+	return res;
+};
+
+// TODO: use object.hasown
+var hasOwnProperty = Object.prototype.hasOwnProperty || function (obj, key) {
+	return key in obj;
+};
+
+function copy(src) {
+	if (typeof src === 'object' && src !== null) {
+		var dst;
+
+		if (isArray(src)) {
+			dst = [];
+		} else if (isDate(src)) {
+			dst = new Date(src.getTime ? src.getTime() : src);
+		} else if (isRegExp(src)) {
+			dst = new RegExp(src);
+		} else if (isError(src)) {
+			dst = { message: src.message };
+		} else if (isBoolean(src) || isNumber(src) || isString(src)) {
+			dst = Object(src);
+		} else if (Object.create && Object.getPrototypeOf) {
+			dst = Object.create(Object.getPrototypeOf(src));
+		} else if (src.constructor === Object) {
+			dst = {};
+		} else {
+			var proto = (src.constructor && src.constructor.prototype)
+                || src.__proto__
+                || {};
+			var T = function T() {}; // eslint-disable-line func-style, func-name-matching
+			T.prototype = proto;
+			dst = new T();
+		}
+
+		forEach(objectKeys(src), function (key) {
+			dst[key] = src[key];
+		});
+		return dst;
+	}
+	return src;
+}
+
+function walk(root, cb, immutable) {
+	var path = [];
+	var parents = [];
+	var alive = true;
+
+	return (function walker(node_) {
+		var node = immutable ? copy(node_) : node_;
+		var modifiers = {};
+
+		var keepGoing = true;
+
+		var state = {
+			node: node,
+			node_: node_,
+			path: [].concat(path),
+			parent: parents[parents.length - 1],
+			parents: parents,
+			key: path[path.length - 1],
+			isRoot: path.length === 0,
+			level: path.length,
+			circular: null,
+			update: function (x, stopHere) {
+				if (!state.isRoot) {
+					state.parent.node[state.key] = x;
+				}
+				state.node = x;
+				if (stopHere) { keepGoing = false; }
+			},
+			delete: function (stopHere) {
+				delete state.parent.node[state.key];
+				if (stopHere) { keepGoing = false; }
+			},
+			remove: function (stopHere) {
+				if (isArray(state.parent.node)) {
+					state.parent.node.splice(state.key, 1);
+				} else {
+					delete state.parent.node[state.key];
+				}
+				if (stopHere) { keepGoing = false; }
+			},
+			keys: null,
+			before: function (f) { modifiers.before = f; },
+			after: function (f) { modifiers.after = f; },
+			pre: function (f) { modifiers.pre = f; },
+			post: function (f) { modifiers.post = f; },
+			stop: function () { alive = false; },
+			block: function () { keepGoing = false; },
+		};
+
+		if (!alive) { return state; }
+
+		function updateState() {
+			if (typeof state.node === 'object' && state.node !== null) {
+				if (!state.keys || state.node_ !== state.node) {
+					state.keys = objectKeys(state.node);
+				}
+
+				state.isLeaf = state.keys.length === 0;
+
+				for (var i = 0; i < parents.length; i++) {
+					if (parents[i].node_ === node_) {
+						state.circular = parents[i];
+						break; // eslint-disable-line no-restricted-syntax
+					}
+				}
+			} else {
+				state.isLeaf = true;
+				state.keys = null;
+			}
+
+			state.notLeaf = !state.isLeaf;
+			state.notRoot = !state.isRoot;
+		}
+
+		updateState();
+
+		// use return values to update if defined
+		var ret = cb.call(state, state.node);
+		if (ret !== undefined && state.update) { state.update(ret); }
+
+		if (modifiers.before) { modifiers.before.call(state, state.node); }
+
+		if (!keepGoing) { return state; }
+
+		if (
+			typeof state.node === 'object'
+			&& state.node !== null
+			&& !state.circular
+		) {
+			parents.push(state);
+
+			updateState();
+
+			forEach(state.keys, function (key, i) {
+				path.push(key);
+
+				if (modifiers.pre) { modifiers.pre.call(state, state.node[key], key); }
+
+				var child = walker(state.node[key]);
+				if (immutable && hasOwnProperty.call(state.node, key)) {
+					state.node[key] = child.node;
+				}
+
+				child.isLast = i === state.keys.length - 1;
+				child.isFirst = i === 0;
+
+				if (modifiers.post) { modifiers.post.call(state, child); }
+
+				path.pop();
+			});
+			parents.pop();
+		}
+
+		if (modifiers.after) { modifiers.after.call(state, state.node); }
+
+		return state;
+	}(root)).node;
+}
+
+function Traverse(obj) {
+	this.value = obj;
 }
 
 Traverse.prototype.get = function (ps) {
-    var node = this.value;
-    for (var i = 0; i < ps.length; i ++) {
-        var key = ps[i];
-        if (!node || !hasOwnProperty.call(node, key)) {
-            node = undefined;
-            break;
-        }
-        node = node[key];
-    }
-    return node;
+	var node = this.value;
+	for (var i = 0; i < ps.length; i++) {
+		var key = ps[i];
+		if (!node || !hasOwnProperty.call(node, key)) {
+			return void undefined;
+		}
+		node = node[key];
+	}
+	return node;
 };
 
 Traverse.prototype.has = function (ps) {
-    var node = this.value;
-    for (var i = 0; i < ps.length; i ++) {
-        var key = ps[i];
-        if (!node || !hasOwnProperty.call(node, key)) {
-            return false;
-        }
-        node = node[key];
-    }
-    return true;
+	var node = this.value;
+	for (var i = 0; i < ps.length; i++) {
+		var key = ps[i];
+		if (!node || !hasOwnProperty.call(node, key)) {
+			return false;
+		}
+		node = node[key];
+	}
+	return true;
 };
 
 Traverse.prototype.set = function (ps, value) {
-    var node = this.value;
-    for (var i = 0; i < ps.length - 1; i ++) {
-        var key = ps[i];
-        if (!hasOwnProperty.call(node, key)) node[key] = {};
-        node = node[key];
-    }
-    node[ps[i]] = value;
-    return value;
+	var node = this.value;
+	for (var i = 0; i < ps.length - 1; i++) {
+		var key = ps[i];
+		if (!hasOwnProperty.call(node, key)) { node[key] = {}; }
+		node = node[key];
+	}
+	node[ps[i]] = value;
+	return value;
 };
 
 Traverse.prototype.map = function (cb) {
-    return walk(this.value, cb, true);
+	return walk(this.value, cb, true);
 };
 
 Traverse.prototype.forEach = function (cb) {
-    this.value = walk(this.value, cb, false);
-    return this.value;
+	this.value = walk(this.value, cb, false);
+	return this.value;
 };
 
 Traverse.prototype.reduce = function (cb, init) {
-    var skip = arguments.length === 1;
-    var acc = skip ? this.value : init;
-    this.forEach(function (x) {
-        if (!this.isRoot || !skip) {
-            acc = cb.call(this, acc, x);
-        }
-    });
-    return acc;
+	var skip = arguments.length === 1;
+	var acc = skip ? this.value : init;
+	this.forEach(function (x) {
+		if (!this.isRoot || !skip) {
+			acc = cb.call(this, acc, x);
+		}
+	});
+	return acc;
 };
 
 Traverse.prototype.paths = function () {
-    var acc = [];
-    this.forEach(function (x) {
-        acc.push(this.path); 
-    });
-    return acc;
+	var acc = [];
+	this.forEach(function () {
+		acc.push(this.path);
+	});
+	return acc;
 };
 
 Traverse.prototype.nodes = function () {
-    var acc = [];
-    this.forEach(function (x) {
-        acc.push(this.node);
-    });
-    return acc;
+	var acc = [];
+	this.forEach(function () {
+		acc.push(this.node);
+	});
+	return acc;
 };
 
 Traverse.prototype.clone = function () {
-    var parents = [], nodes = [];
-    
-    return (function clone (src) {
-        for (var i = 0; i < parents.length; i++) {
-            if (parents[i] === src) {
-                return nodes[i];
-            }
-        }
-        
-        if (typeof src === 'object' && src !== null) {
-            var dst = copy(src);
-            
-            parents.push(src);
-            nodes.push(dst);
-            
-            forEach(objectKeys(src), function (key) {
-                dst[key] = clone(src[key]);
-            });
-            
-            parents.pop();
-            nodes.pop();
-            return dst;
-        }
-        else {
-            return src;
-        }
-    })(this.value);
+	var parents = [];
+	var nodes = [];
+
+	return (function clone(src) {
+		for (var i = 0; i < parents.length; i++) {
+			if (parents[i] === src) {
+				return nodes[i];
+			}
+		}
+
+		if (typeof src === 'object' && src !== null) {
+			var dst = copy(src);
+
+			parents.push(src);
+			nodes.push(dst);
+
+			forEach(objectKeys(src), function (key) {
+				dst[key] = clone(src[key]);
+			});
+
+			parents.pop();
+			nodes.pop();
+			return dst;
+		}
+
+		return src;
+
+	}(this.value));
 };
 
-function walk (root, cb, immutable) {
-    var path = [];
-    var parents = [];
-    var alive = true;
-    
-    return (function walker (node_) {
-        var node = immutable ? copy(node_) : node_;
-        var modifiers = {};
-        
-        var keepGoing = true;
-        
-        var state = {
-            node : node,
-            node_ : node_,
-            path : [].concat(path),
-            parent : parents[parents.length - 1],
-            parents : parents,
-            key : path.slice(-1)[0],
-            isRoot : path.length === 0,
-            level : path.length,
-            circular : null,
-            update : function (x, stopHere) {
-                if (!state.isRoot) {
-                    state.parent.node[state.key] = x;
-                }
-                state.node = x;
-                if (stopHere) keepGoing = false;
-            },
-            'delete' : function (stopHere) {
-                delete state.parent.node[state.key];
-                if (stopHere) keepGoing = false;
-            },
-            remove : function (stopHere) {
-                if (isArray(state.parent.node)) {
-                    state.parent.node.splice(state.key, 1);
-                }
-                else {
-                    delete state.parent.node[state.key];
-                }
-                if (stopHere) keepGoing = false;
-            },
-            keys : null,
-            before : function (f) { modifiers.before = f },
-            after : function (f) { modifiers.after = f },
-            pre : function (f) { modifiers.pre = f },
-            post : function (f) { modifiers.post = f },
-            stop : function () { alive = false },
-            block : function () { keepGoing = false }
-        };
-        
-        if (!alive) return state;
-        
-        function updateState() {
-            if (typeof state.node === 'object' && state.node !== null) {
-                if (!state.keys || state.node_ !== state.node) {
-                    state.keys = objectKeys(state.node)
-                }
-                
-                state.isLeaf = state.keys.length == 0;
-                
-                for (var i = 0; i < parents.length; i++) {
-                    if (parents[i].node_ === node_) {
-                        state.circular = parents[i];
-                        break;
-                    }
-                }
-            }
-            else {
-                state.isLeaf = true;
-                state.keys = null;
-            }
-            
-            state.notLeaf = !state.isLeaf;
-            state.notRoot = !state.isRoot;
-        }
-        
-        updateState();
-        
-        // use return values to update if defined
-        var ret = cb.call(state, state.node);
-        if (ret !== undefined && state.update) state.update(ret);
-        
-        if (modifiers.before) modifiers.before.call(state, state.node);
-        
-        if (!keepGoing) return state;
-        
-        if (typeof state.node == 'object'
-        && state.node !== null && !state.circular) {
-            parents.push(state);
-            
-            updateState();
-            
-            forEach(state.keys, function (key, i) {
-                path.push(key);
-                
-                if (modifiers.pre) modifiers.pre.call(state, state.node[key], key);
-                
-                var child = walker(state.node[key]);
-                if (immutable && hasOwnProperty.call(state.node, key)) {
-                    state.node[key] = child.node;
-                }
-                
-                child.isLast = i == state.keys.length - 1;
-                child.isFirst = i == 0;
-                
-                if (modifiers.post) modifiers.post.call(state, child);
-                
-                path.pop();
-            });
-            parents.pop();
-        }
-        
-        if (modifiers.after) modifiers.after.call(state, state.node);
-        
-        return state;
-    })(root).node;
+function traverse(obj) {
+	return new Traverse(obj);
 }
 
-function copy (src) {
-    if (typeof src === 'object' && src !== null) {
-        var dst;
-        
-        if (isArray(src)) {
-            dst = [];
-        }
-        else if (isDate(src)) {
-            dst = new Date(src.getTime ? src.getTime() : src);
-        }
-        else if (isRegExp(src)) {
-            dst = new RegExp(src);
-        }
-        else if (isError(src)) {
-            dst = { message: src.message };
-        }
-        else if (isBoolean(src)) {
-            dst = new Boolean(src);
-        }
-        else if (isNumber(src)) {
-            dst = new Number(src);
-        }
-        else if (isString(src)) {
-            dst = new String(src);
-        }
-        else if (Object.create && Object.getPrototypeOf) {
-            dst = Object.create(Object.getPrototypeOf(src));
-        }
-        else if (src.constructor === Object) {
-            dst = {};
-        }
-        else {
-            var proto =
-                (src.constructor && src.constructor.prototype)
-                || src.__proto__
-                || {}
-            ;
-            var T = function () {};
-            T.prototype = proto;
-            dst = new T;
-        }
-        
-        forEach(objectKeys(src), function (key) {
-            dst[key] = src[key];
-        });
-        return dst;
-    }
-    else return src;
-}
-
-var objectKeys = Object.keys || function keys (obj) {
-    var res = [];
-    for (var key in obj) res.push(key)
-    return res;
-};
-
-function toS (obj) { return Object.prototype.toString.call(obj) }
-function isDate (obj) { return toS(obj) === '[object Date]' }
-function isRegExp (obj) { return toS(obj) === '[object RegExp]' }
-function isError (obj) { return toS(obj) === '[object Error]' }
-function isBoolean (obj) { return toS(obj) === '[object Boolean]' }
-function isNumber (obj) { return toS(obj) === '[object Number]' }
-function isString (obj) { return toS(obj) === '[object String]' }
-
-var isArray = Array.isArray || function isArray (xs) {
-    return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
-var forEach = function (xs, fn) {
-    if (xs.forEach) return xs.forEach(fn)
-    else for (var i = 0; i < xs.length; i++) {
-        fn(xs[i], i, xs);
-    }
-};
-
+// TODO: replace with object.assign?
 forEach(objectKeys(Traverse.prototype), function (key) {
-    traverse[key] = function (obj) {
-        var args = [].slice.call(arguments, 1);
-        var t = new Traverse(obj);
-        return t[key].apply(t, args);
-    };
+	traverse[key] = function (obj) {
+		var args = [].slice.call(arguments, 1);
+		var t = new Traverse(obj);
+		return t[key].apply(t, args);
+	};
 });
 
-var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
-    return key in obj;
-};
+module.exports = traverse;
 
 },{}],200:[function(require,module,exports){
 (function (global){(function (){
@@ -32034,7 +32025,7 @@ Url.qs = qs;
 module.exports = Url;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"querystringify":122,"requires-port":138}],201:[function(require,module,exports){
+},{"querystringify":122,"requires-port":139}],201:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
