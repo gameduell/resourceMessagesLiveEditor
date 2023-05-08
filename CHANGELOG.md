@@ -136,3 +136,6 @@
 
 ## 1.3.4
 - sorting project folders and names alphabetically
+
+## 1.3.5
+- Added easier means to close search-modal, e.g. by keystroke (ESC) or clicking into the sides of the view
