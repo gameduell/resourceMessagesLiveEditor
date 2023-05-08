@@ -1683,7 +1683,6 @@ body.login form button {
   height: 98%;
 }
 .searchResults section h2 {
-  text-align: center;
   font-size: 2em;
   margin: 0.5em 0;
 }
@@ -1695,6 +1694,10 @@ body.login form button {
 }
 .searchResults section .term {
   color: yellow;
+}
+.searchResults section .headline {
+  display: inline-block;
+  width: auto;
 }
 .searchResults section .search-options {
   display: flex;
