@@ -139,3 +139,10 @@
 
 ## 1.3.5
 - Added easier means to close search-modal, e.g. by keystroke (ESC) or clicking into the sides of the view
+- Project compiled with npm 8
+
+## 1.3.6
+- reverted package-lock.json to use lockFileVersion 1 again (created with npm 6) due to CI issues
+
+## 1.3.7
+- fixed search modal invocation (modal popped up despite faulty input)
