@@ -989,9 +989,9 @@ var searchBar = canny.searchBar,
 canny.add("searchResults", SearchResults);
 
 searchBar.onSearch(function () {
-    loadingModal.show();
     var searchValue = searchBar.inputNode.value;
     if (searchValue.length > 2) {
+        loadingModal.show();
         trade.searchTerm(searchValue, function (response) {
             loadingModal.hide();
             searchResultsUi.render(response);
