@@ -1,0 +1,18 @@
+.project-copy(canny-mod="ProjectCopy", canny-var="root")
+  .warnings(canny-mod="ProjectCopy" canny-var="warnings")
+    .headline The following keys are exisiting within this project already
+    ul(canny-mod="repeat" canny-var="{'for':'item','in':'canny.ProjectCopy.setRenderKeyWarnings'}")
+      li {{ item }}
+    button.cancel(canny-mod="ProjectCopy", canny-var="btnCloseWarnings") Close
+  .headline Select project to copy contents from into current project 
+  .content
+    .project-list
+      table
+        tbody(canny-mod="repeat" canny-var="{'for':'item','in':'canny.ProjectCopy.setRenderProjectList'}")
+          tr(data-listItem="{{item.projectId}}", class="{{item.className}}")
+            td(on-click="item.selectProjectForImport", title="Select '{{item.name}}' project").octicon.octicon-file-code {{item.projectId}}
+    .project-selected
+      .caption Project to clone:
+      .name(canny-mod="ProjectCopy", canny-var="selectedProject")
+    button.confirm(canny-mod="ProjectCopy", canny-var="btnConfirm") Clone
+    button.cancel(canny-mod="ProjectCopy", canny-var="btnClose") Close

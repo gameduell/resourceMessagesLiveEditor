@@ -16,6 +16,10 @@
           a(canny-mod='projectMainNavigation', canny-var='toggleWordCount')
             span Toggle word count
             span.icon.octicon.octicon-graph
+        li.privileged
+          a(canny-mod='projectMainNavigation', canny-var='showCopyModal')
+            span Import/Clone project
+            span.icon.octicon.octicon-clippy
     label Developer menu
     .menuNavigation.developer
       ul.navigationMenu.developer
@@ -29,18 +33,22 @@
             span.icon.octicon.octicon-eye
         li
           a(canny-mod='projectMainNavigation', canny-var='showJMBFUploader')
-            span upload message bundle
+            span Upload message bundle
             span.icon.octicon.octicon-hubot
         li
           a(canny-mod='projectMainNavigation', canny-var='showJSONImport')
-            span upload json bundle
+            span Upload json bundle
             span.icon.octicon.octicon-beaker
+        li.privileged
+          a(canny-mod='projectMainNavigation', canny-var='showJsonEditor')
+            span Edit content in JSON format
+            span.icon.octicon.octicon-code
     label Info and help
     .menuNavigation.infoHelp
       ul.navigationMenu.infoHelp
         li
           a(href='https://confluence.gameduell.de/display/MOBS/Language+properties+tool', target='_blank')
-            span about translation tool
+            span About translation tool
             span.icon.octicon.octicon-light-bulb
         li
           a(href='https://github.com/eightyfour/resourceMessagesLiveEditor', target='_blank')

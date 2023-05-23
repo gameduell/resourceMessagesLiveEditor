@@ -1511,11 +1511,311 @@ body.login form button {
 .upload .dropWrap.yellow:hover {
   color: #f6ec36;
 }
+.json-editor {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.json-editor * {
+  box-sizing: border-box;
+}
+.json-editor .headline {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  color: white;
+}
+.json-editor form.editor {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+}
+.json-editor form.editor textarea {
+  border-radius: 7px;
+  border-color: transparent;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  outline: 0;
+}
+.json-editor form.editor .error-message {
+  position: absolute;
+  display: none;
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-weight: bold;
+  z-index: -1;
+}
+.json-editor button {
+  cursor: pointer;
+  display: inline-block;
+  margin: 1.25rem 0.5rem 0;
+  padding: 0.75rem 1rem;
+  min-height: 1em;
+  outline: 0;
+  border: none;
+  vertical-align: baseline;
+  color: #fff;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  text-transform: none;
+  text-shadow: none;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+  background: transparent !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) inset;
+  font-weight: 400;
+}
+.json-editor button.load:hover {
+  box-shadow: 0 0 0 2px #27d1ec inset;
+  color: #27d1ec;
+}
+.json-editor button.submit:hover {
+  box-shadow: 0 0 0 2px #45e648 inset;
+  color: #45e648;
+}
+.json-editor button.cancel:hover {
+  box-shadow: 0 0 0 2px tomato inset;
+  color: tomato;
+}
+.json-editor button:first-of-type {
+  margin-left: 0;
+}
+.json-editor .checkboxes {
+  text-align: right;
+  color: lightgray;
+}
+.json-editor .warnings {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 3em;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+}
+.json-editor .warnings.show {
+  display: flex;
+}
+.json-editor .warnings ul {
+  list-style: decimal-leading-zero inside;
+  padding: 1em;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+}
+.json-editor .warnings ul li {
+  font-size: 14px;
+  line-height: 20px;
+  color: orange;
+}
+.json-editor.error form.editor textarea {
+  color: tomato;
+  box-shadow: 0 0 0 3px tomato;
+}
+.json-editor.error form.editor .error-message {
+  display: block;
+}
+.project-copy {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.project-copy * {
+  box-sizing: border-box;
+}
+.project-copy .headline {
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  color: white;
+}
+.project-copy .content {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+}
+.project-copy .project-list {
+  margin-bottom: 1em;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: white;
+  overflow: auto;
+}
+.project-copy .project-list table {
+  padding-top: 0.5em;
+  width: 100%;
+}
+.project-copy .project-list table * {
+  box-sizing: border-box;
+}
+.project-copy .project-list table tr {
+  display: flex;
+}
+.project-copy .project-list table tr:nth-child(odd) {
+  background: #f0f7fa;
+}
+.project-copy .project-list table tr:nth-child(odd):hover {
+  background: #e4eef2;
+}
+.project-copy .project-list table tr:hover {
+  background: #dfe8eb;
+}
+.project-copy .project-list table tr.selected,
+.project-copy .project-list table tr.selected:hover,
+.project-copy .project-list table tr.selected td:hover {
+  background: lightseagreen;
+  color: white;
+}
+.project-copy .project-list table tr td {
+  display: inline-block;
+  flex-grow: 1;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+.project-copy .project-list table tr td:hover {
+  color: #2b9bbf;
+}
+.project-copy .project-list table tr td:active {
+  color: darkslategray;
+}
+.project-copy .project-list table tr td:before {
+  padding-right: 0.3em;
+}
+.project-copy .project-list .error-message {
+  position: absolute;
+  display: none;
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-weight: bold;
+}
+.project-copy .warnings {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 3em;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+}
+.project-copy .warnings.show {
+  display: flex;
+}
+.project-copy .warnings ul {
+  list-style: decimal-leading-zero inside;
+  padding: 1em;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+}
+.project-copy .warnings ul li {
+  font-size: 14px;
+  line-height: 20px;
+  color: orange;
+}
+.project-copy .project-selected {
+  display: flex;
+  text-align: left;
+  color: white;
+}
+.project-copy .project-selected .caption {
+  flex-grow: 0;
+  margin-right: 1em;
+}
+.project-copy .project-selected .name {
+  flex-grow: 1;
+}
+.project-copy button {
+  cursor: pointer;
+  display: inline-block;
+  margin: 1.25rem 0.5rem 0;
+  padding: 0.75rem 1rem;
+  min-height: 1em;
+  outline: 0;
+  border: none;
+  vertical-align: baseline;
+  color: #fff;
+  text-transform: none;
+  text-shadow: none;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) inset;
+  font-weight: 400;
+}
+.project-copy button.load:hover {
+  box-shadow: 0 0 0 2px #27d1ec inset;
+  color: #27d1ec;
+}
+.project-copy button.confirm:hover {
+  box-shadow: 0 0 0 2px #45e648 inset;
+  color: #45e648;
+}
+.project-copy button.cancel:hover {
+  box-shadow: 0 0 0 2px tomato inset;
+  color: tomato;
+}
+.project-copy button:first-of-type {
+  margin-left: 0;
+}
+.project-copy.error form.editor textarea {
+  color: tomato;
+  box-shadow: 0 0 0 3px tomato;
+}
+.project-copy.error form.editor .error-message {
+  display: block;
+}
 .projectOverview-buttons .js-toggleEditModeButton {
+  display: none;
+}
+.privileged {
   display: none;
 }
 .isAdmin .projectOverview-buttons .js-toggleEditModeButton {
   display: inline-block;
+}
+.isAdmin .privileged {
+  display: inherit;
 }
 .connectionLost {
   position: fixed;

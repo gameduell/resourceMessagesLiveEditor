@@ -146,3 +146,7 @@
 
 ## 1.3.7
 - fixed search modal invocation (modal popped up despite faulty input)
+
+## 1.4.0
+- added project-import feature into project view (project manager section in sidemenu)
+- added json-editor feature into project view (developer section in sidemenu)

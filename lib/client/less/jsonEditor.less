@@ -1,0 +1,144 @@
+.json-editor {
+  * {
+    box-sizing: border-box;
+  }
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .headline {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    font-size: 1.25em;
+    margin-bottom: 1em;
+    color: white;
+  }
+  form.editor {
+    width: 50%;
+    height: 50%;
+    text-align: center;
+
+    textarea {
+      border-radius: 7px;
+      border-color: transparent;
+      padding: 1rem;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      outline: 0;
+    }
+    .error-message {
+      position: absolute;
+      display: none;
+      margin: 0;
+      padding: 0;
+      color: red;
+      font-weight: bold;
+      z-index: -1;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    display: inline-block;
+    margin: 1.25rem 0.5rem 0;
+    padding: 0.75rem 1rem;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    color: #fff;
+    font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-transform: none;
+    text-shadow: none;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: opacity 0.1s ease, background-color 0.1s ease,
+      color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+      box-shadow 0.1s ease, background 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+    background: transparent !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) inset;
+    font-weight: 400;
+
+    &.load {
+      &:hover {
+        box-shadow: 0 0 0 2px #27d1ec inset;
+        color: #27d1ec;
+      }
+    }
+    &.submit {
+      &:hover {
+        box-shadow: 0 0 0 2px #45e648 inset;
+        color: #45e648;
+      }
+    }
+    &.cancel {
+      &:hover {
+        box-shadow: 0 0 0 2px tomato inset;
+        color: tomato;
+      }
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  .checkboxes {
+    text-align: right;
+    color: lightgray;
+  }
+
+  .warnings {
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 3em;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    &.show {
+      display: flex;
+    }
+    ul {
+      list-style: decimal-leading-zero inside;
+      padding: 1em;
+      width: 50%;
+      height: 50%;
+      overflow: auto;
+      li {
+        font-size: 14px;
+        line-height: 20px;
+        color: orange;
+      }
+    }
+  }
+
+  &.error {
+    form.editor {
+      textarea {
+        color: tomato;
+        box-shadow: 0 0 0 3px tomato;
+      }
+      .error-message {
+        display: block;
+      }
+    }
+  }
+}

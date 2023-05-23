@@ -63,6 +63,12 @@ html
     div(style='display: none', canny-mod='displayManager', canny-var="{'overlay':'JSONImportView'}")
       include JsonImportOverlay
 
+    div(style='display: none', canny-mod='displayManager', canny-var="{'overlay':'JsonEditorView'}")
+      include JsonEditorOverlay
+
+    div(style='display: none', canny-mod='displayManager', canny-var="{'overlay':'ProjectCopyView'}")
+      include ProjectCopyOverlay
+
     div.loadingModal(canny-mod='loadingModal')
       include loadingModal
 

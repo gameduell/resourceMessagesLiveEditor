@@ -1,0 +1,16 @@
+.json-editor(canny-mod="JsonEditor", canny-var="root", id="json-editor", class="texteditor-input")
+  .warnings(canny-mod="JsonEditor" canny-var="warnings")
+    .headline The following keys are exisiting within this project already
+    ul(canny-mod="repeat" canny-var="{'for':'item','in':'canny.JsonEditor.setRenderKeyWarnings'}")
+      li {{ item }}
+    button.cancel(canny-mod="JsonEditor", canny-var="btnCloseWarnings") Close
+  .headline Enter and merge JSON data with current project
+  form.editor
+    textarea(canny-mod="JsonEditor", canny-var="textarea", placeholder="Enter valid JSON here")
+    p.error-message Please check entered data for errors
+    .checkboxes
+      label(for="checkbox-key-safety") force override
+      input(canny-mod="JsonEditor", canny-var="checkboxSafety", type="checkbox", id="checkbox-key-safety", name="checkbox-key-safety")
+    button.button.load(canny-mod="JsonEditor", canny-var="btnLoad") Load project
+    button.button.submit(canny-mod="JsonEditor", canny-var="btnSave") Save
+    button.button.cancel(canny-mod="JsonEditor", canny-var="btnClose") Close
